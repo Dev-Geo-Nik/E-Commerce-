@@ -1,0 +1,245 @@
+/*
+=============== 
+Fonts
+===============
+
+/*
+=============== 
+Variables
+===============
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+html {
+  /*1rem = 10px */
+
+  font-size: 62.5%;
+}
+
+
+
+
+  /*************************   Color Palette    ********************/
+ 
+  $clr-primary-1: #E7A74F; 
+  $clr-primary-2: #2A1B0D; 
+  
+  $clr-primary-1-hover:#dd8408;
+  
+
+  $clr-modal-1 :rgba(0,0,0,0.35);
+
+
+
+  $clr-error-1:#d32f2f;
+  $clr-success:#2e7d32;
+
+
+  /*  color  used for headings */
+  $clr-title-1: #ffff;
+  $clr-title-2: #2A1B0D;
+
+
+
+  /* text colors */
+  $clr-text-1:#2A1B0D;
+  $clr-text-2: hsl(210, 31%, 80%);
+
+  /* background color */
+  $clr-background-1:#2A1B0D;
+  $clr-background-menu:#F7F3E3;
+
+
+
+
+  /*************************   Fonts     ********************/
+  $ff-primary-1 : "lato", sans-serif;
+  $ff-primary-2 : "Raleway", sans-serif;
+  $ff-primary-3 : "Comfortaa", sans-serif;
+ 
+  
+  $ff-paragraph-1:"lato", sans-serif;
+  
+  
+  
+  /*************************   Shadows     ********************/
+  $light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  $dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  
+  $transition: all 0.3s linear;
+  $spacing: 0.2rem;
+  $radius: 0.25rem;
+
+  $max-width: 1440px;
+  $fixed-width: 700px;
+  
+  /* Margins */
+
+  
+
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+ 
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  /* letter-spacing: var(--spacing); */
+  /* text-transform: capitalize; */
+  /* line-height: 1.25; */
+  /* margin-bottom: 0.75rem; */
+  /* font-family: var(--ff-primary); */
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+ 
+}
+/* 
+img{
+  max-width: 100%;
+  display: block;
+} */
+/*  global classes */
+
+.btn-cta {
+  text-transform: uppercase;
+  background: $clr-primary-1;
+  color: $clr-text-1;
+  padding: 0.8rem 2rem;
+  transition:$transition;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem; 
+  font-size: 1.8rem;
+  font-family: $ff-primary-1;
+  font-weight: bold;
+
+
+
+}
+.btn-cta:hover {
+
+  background: $clr-primary-1-hover;
+}
+
+.btn-ghost{
+  text-transform: uppercase;
+  background-color: transparent;
+  color:$clr-text-1;
+  padding: 0.8rem 2rem;
+  transition: $transition;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid #000;
+  border-radius: 1rem; 
+  font-size: 1.8rem;
+  font-family: $ff-primary-3;
+  font-weight: bold;
+}
+
+.btn-ghost:hover {
+
+  background: $clr-primary-1-hover;
+}
+
+
+.center-btn {
+  display: block;
+  width: 12rem;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/*  utility classes */
+
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  // background: $clr-modal-
+}
+
+.absolute{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+  
+/* 1400px */
+@media only screen and (max-width:87.5em) {
+
+
+}
+    /* 1200px - 1025px */
+    @media only screen and (max-width:75em) {
+    
+  }
+
+
+  /* 1024px - 769px  */
+  @media only screen and (max-width:64em) {
+
+
+  }
+
+ /*768px - 481px */
+ @media only screen and (max-width:48em) {
+   
+ }
+
+  /* 480px -  320px  */
+  @media only screen and (max-width:30em) {
+
+    }
