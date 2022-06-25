@@ -1,81 +1,84 @@
-/*
-=============== 
-Fonts
-===============
 
-/*
-=============== 
-Variables
-===============
-*/
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+
 html {
   /*1rem = 10px */
-
   font-size: 62.5%;
 }
 
+body {
 
+  font-family:'Lato', 'Montserrat',  'Helvetica Neue',"sans-serif";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* Variables */
+:root{
 
 
   /*************************   Color Palette    ********************/
+  --clr-primary-1: #FF5400; 
+    --clr-primary-2: #272727; 
+    --clr-primary-3: #B8DBD9; 
+    --clr-primary-4: #ffe66d; 
+    --clr-primary-5: #04724D; 
+
  
-  $clr-primary-1: #E7A74F; 
-  $clr-primary-2: #2A1B0D; 
   
-  $clr-primary-1-hover:#dd8408;
   
+  --clr-primary-1-hover:#dd8408;
+  --clr-modal-1 :rgba(0,0,0,0.35);
 
-  $clr-modal-1 :rgba(0,0,0,0.35);
-
-
-
-  $clr-error-1:#d32f2f;
-  $clr-success:#2e7d32;
+  
+  --clr-error-1:#d32f2f;
+  --clr-success:#2e7d32;
 
 
   /*  color  used for headings */
-  $clr-title-1: #ffff;
-  $clr-title-2: #2A1B0D;
-
+  --clr-title-1: #ffff;
+  --clr-title-2: #2A1B0D;
 
 
   /* text colors */
-  $clr-text-1:#2A1B0D;
-  $clr-text-2: hsl(210, 31%, 80%);
+  --clr-text-1:#2A1B0D;
+  --clr-text-2: hsl(210, 31%, 80%);
 
   /* background color */
-  $clr-background-1:#2A1B0D;
-  $clr-background-menu:#F7F3E3;
-
-
+  --clr-background-1:#272727;
+  --clr-background-menu:#F7F3E3;
 
 
   /*************************   Fonts     ********************/
-  $ff-primary-1 : "lato", sans-serif;
-  $ff-primary-2 : "Raleway", sans-serif;
-  $ff-primary-3 : "Comfortaa", sans-serif;
+  --ff-primary-1 : "Lato", sans-serif;
+  --ff-primary-2 : "Montserrat", sans-serif;
+  
+  --ff-paragraph-1:"Montserrat", sans-serif;
  
   
-  $ff-paragraph-1:"lato", sans-serif;
-  
-  
-  
   /*************************   Shadows     ********************/
-  $light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  $dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   
   
-  $transition: all 0.3s linear;
-  $spacing: 0.2rem;
-  $radius: 0.25rem;
+  --transition: all 0.3s linear;
+  --spacing: 0.2rem;
+  --radius: 0.25rem;
 
-  $max-width: 1440px;
-  $fixed-width: 700px;
+  --max-width: 1440px;
+  --fixed-width: 700px;
   
-  /* Margins */
+  
+  
+  
 
-  
+
+} 
+
 
 
 /*
@@ -91,9 +94,7 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
-body {
- 
-}
+
 ul {
   list-style-type: none;
 }
@@ -135,16 +136,16 @@ img{
 
 .btn-cta {
   text-transform: uppercase;
-  background: $clr-primary-1;
-  color: $clr-text-1;
+  background: var(--clr-primary-1);
+  color: var(--clr-text-1);
   padding: 0.8rem 2rem;
-  transition:$transition;
+  transition:var(--transition);
   display: inline-block;
   cursor: pointer;
   border: none;
   border-radius: 1rem; 
   font-size: 1.8rem;
-  font-family: $ff-primary-1;
+  font-family: var(--ff-primary-1);
   font-weight: bold;
 
 
@@ -152,27 +153,27 @@ img{
 }
 .btn-cta:hover {
 
-  background: $clr-primary-1-hover;
+  background: var(--clr-primary-1-hover);
 }
 
 .btn-ghost{
   text-transform: uppercase;
   background-color: transparent;
-  color:$clr-text-1;
+  color:var(--clr-text-1);
   padding: 0.8rem 2rem;
-  transition: $transition;
+  transition: var(--transition);
   display: inline-block;
   cursor: pointer;
   border: 2px solid #000;
   border-radius: 1rem; 
   font-size: 1.8rem;
-  font-family: $ff-primary-3;
+  font-family: var(--ff-primary-3);
   font-weight: bold;
 }
 
 .btn-ghost:hover {
 
-  background: $clr-primary-1-hover;
+  background: var(--clr-primary-1-hover);
 }
 
 
@@ -205,7 +206,7 @@ img{
   right: 0;
   bottom: 0;
   z-index: 2;
-  // background: $clr-modal-
+  background: var(--clr-modal-1)
 }
 
 .absolute{

@@ -1,13 +1,15 @@
 import React from 'react';
-import Test from '../components/Test';
+import Home from '../components/home/home';
+
+
+
 
 
 const  index :React.FC = () => {
-
+  
   return (
 <>
-     <h2>Welcome Home</h2>
-     <Test/>
+   <Home/> 
 </>
 );
 };

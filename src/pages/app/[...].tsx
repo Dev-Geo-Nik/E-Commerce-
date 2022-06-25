@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router as MyRouter, useNavigate, redirectTo, } from "@reach/router"
+import { Router as MyRouter } from "@reach/router"
 
 import NotFoundPage from '../404';
 import Login from '../../components/auth/login/Login';

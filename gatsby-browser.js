@@ -7,8 +7,8 @@ exports.wrapRootElement   = ({element}) =>{
 }
 
 
-// const React = require('react');
-// const Layout = require("./src/components/Layout/Layout").default
+
+// const Layout = require("./src/components/layout/Layout").default
 
 // exports.wrapPageElement = ({element,props})=>{
 //     return<Layout {...props}>{element}</Layout>

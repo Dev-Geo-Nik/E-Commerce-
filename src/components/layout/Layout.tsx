@@ -4,8 +4,9 @@ import Footer from "./Footer";
 
 
 
-const theme = {}
-import "../../assets/css/main.scss";
+
+import "../../assets/css/main.css";
+import "../../assets/css/mixins.scss";
 
 const Layout = ({ children }:any) => {
     return <>
