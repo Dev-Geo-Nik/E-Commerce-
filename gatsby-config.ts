@@ -6,6 +6,13 @@ require('dotenv').config({
 });
 
 
+const strapiConfig = {
+  apiURL: process.env.STRAPI_API_URL,
+  accessToken: process.env.STRAPI_TOKEN,
+  collectionTypes: ['test',"playstationgame"],
+  // singleTypes: [],
+};
+
 const config: GatsbyConfig = {
   siteMetadata: {
     defaultTitle: `GAMESOURCE`,
@@ -28,7 +35,15 @@ const config: GatsbyConfig = {
       }
     },
  
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        cssLoaderOptions: {
+          // camelCase: true,
+          implementation: require("node-sass")
+        },
+      },
+    },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-styled-components", 
     "gatsby-plugin-image",
@@ -50,15 +65,10 @@ const config: GatsbyConfig = {
     // __key: "images"
   },
   
-  // {
-  //   resolve: `gatsby-source-strapi`,
-  //   options: {
-  //     apiURL: process.env.STRAPI_API_URL,
-  //     accessToken: process.env.STRAPI_TOKEN,
-  //     collectionTypes: ['category',"gallery","testimonial","menu"],
-  //     // singleTypes: []
-  //   },
-  // }, 
+  {
+    resolve: `gatsby-source-strapi`,
+    options: strapiConfig
+  }, 
 ]
 };
 

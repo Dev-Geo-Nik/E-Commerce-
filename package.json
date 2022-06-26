@@ -45,6 +45,7 @@
     "sass": "^1.52.3",
     "styled-components": "^5.3.5",
     "uniqid": "^5.4.0",
+    "webpack-filter-warnings-plugin": "^1.2.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
