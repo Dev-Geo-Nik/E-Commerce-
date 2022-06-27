@@ -4,11 +4,16 @@ import { reducer } from './GameReducer';
 
 
 export interface GameContextState {
-      
+      currentPlaystationPlatform :string
+      currentPlaystationPublisher: string
+      currentPlaystationGenre: string
 }
 
 const initialState : GameContextState = {
-  
+    currentPlaystationPlatform:"Playstation 4",
+    currentPlaystationPublisher:"All Publishers",
+    currentPlaystationGenre:"All Genres",
+
 }
 
 

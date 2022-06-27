@@ -3,6 +3,8 @@ import SectionTest from '../home/SectionTest';
 import Footer from '../layout/Footer';
 import Navbar from '../layout/Navbar';
 import SEO from '../layout/Seo';
+import DisplayPlaystationGames from './displayPlaystationGames/displayPlaystationGames';
+import Filters from './filters/Filters';
 
 import  * as styles from './playstation.module.scss';
 
@@ -18,7 +20,8 @@ const  Playstation :React.FC<Props> = () => {
    <section className={styles.container}>
     <SEO title="Playstation" description="Playstation video game page for sell" />
         <Navbar/>
-            <SectionTest/>
+          <Filters/>
+          <DisplayPlaystationGames/>
         <Footer/>
     </section>
 

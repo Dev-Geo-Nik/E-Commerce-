@@ -1,0 +1,20 @@
+.container {
+    // background-color: beige;
+    margin: 2rem 0;
+    grid-column:  2 / 14;
+
+    select{
+        color:var(--clr-primary-3);
+        background-color:var(--clr-background-2);
+        padding:1rem 2rem;
+        margin-right: 2rem;
+        border-radius:5px;
+        transition:var(--transition);
+        border: 1px solid var(--clr-primary-2);
+
+        &:hover{
+            border: 1px solid var(--clr-primary-1);
+           
+        }
+    }
+}

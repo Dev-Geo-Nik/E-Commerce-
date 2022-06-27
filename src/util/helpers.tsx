@@ -53,39 +53,4 @@ export function getRandomNumberBetween(min:number,max:number){
 }
 
 
-export const  findCategoryHelper = (categoryName:string)=>{
 
-  switch (categoryName) {
-    case"Signature Burgers":
-       return "beef-burger"
-
-    case"Chicken Burgers":
-       return  "chicken-burger"
-       
-    case"Turkey Burgers":
-       return "turkey-burger"
-       
-    case"Black Bean Burgers":
-       return "bean-burger"
-       
-    case"Kids Meals":
-       return 'kid-menu'
-
-    case"Shakes & Desserts":
-       return "dessert"
-
-    case"Fries & Sides":
-       return "fries"
-
-    case"Salads":
-       return "salad"
-
-    case"Beverages":
-       return "Beverages"
-      
-  
-    default:
-      null;
-  }
-
-}
