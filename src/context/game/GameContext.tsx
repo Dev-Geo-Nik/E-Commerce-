@@ -10,7 +10,7 @@ export interface GameContextState {
 }
 
 const initialState : GameContextState = {
-    currentPlaystationPlatform:"Playstation 4",
+    currentPlaystationPlatform:"playstation 4",
     currentPlaystationPublisher:"All Publishers",
     currentPlaystationGenre:"All Genres",
 

@@ -23,12 +23,12 @@ let displayGenrePS5 = genresPS5.sort().map((gen,index)=>{
   return <option label={gen} key={index} value={gen} >{gen}</option>
 })
 
-console.log("GENRE!",currentPlaystationPlatform)
 return (
   <select    value={currentPlaystationGenre} onChange={handleChange}  >
       <option value="All Genres" >All Genres</option>
-
-      {currentPlaystationPlatform === "Playstation 4" ? displayGenrePS4 : displayGenrePS5}
+       {currentPlaystationPlatform === "playstation 4" && displayGenrePS4} 
+       {currentPlaystationPlatform === "playstation 5" && displayGenrePS5} 
+    
 </select>
 );
 };

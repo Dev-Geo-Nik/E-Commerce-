@@ -33,7 +33,8 @@ let displayPublishersPS5 = publishersPS5.map((publisher,index)=>{
 return (
   <select    value={currentPlaystationPublisher} onChange={handleChange}  >
       <option value="All Publishers" >All Publishers</option>
-      {currentPlaystationPlatform === "Playstation 4" ? displayPublishersPS4 : displayPublishersPS5}
+        {currentPlaystationPlatform === "playstation 4" && displayPublishersPS4} 
+       {currentPlaystationPlatform === "playstation 5" && displayPublishersPS5} 
 </select>
 );
 };
