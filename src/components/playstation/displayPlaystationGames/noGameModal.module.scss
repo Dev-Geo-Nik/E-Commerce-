@@ -1,0 +1,58 @@
+.textContainer{
+position:absolute;
+
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+color:var(--clr-primary-2);
+ z-index:3;   
+ background-color:#fff;
+ background-color:var(--clr-primary-3);
+  width:40%;
+  height:30vh;
+  border-radius:5px;
+
+    button{
+        margin-top:2rem;
+    }
+}
+
+
+.flexContainer{
+    position:relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index:3;   
+    background-color:rgba(0,0,0,0.5);
+}
+
+.iconClose{
+    font-size:3rem;
+    position: fixed;
+    top: 0rem;
+    right: 0rem;
+    margin: 1rem;
+    transition:var(--transition);
+    padding: 0.4rem;
+    border-radius: 50%;
+    
+    &:hover{
+      color:var(--clr-error-1);
+      background-color:var(--clr-primary-2);
+      transform: scale(1.05);
+      
+      
+    }
+  }

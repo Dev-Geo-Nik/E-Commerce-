@@ -1,5 +1,72 @@
 .container{
     grid-column:  2 / 14;
     background-color:var(--clr-background-2);
-    height: 80vh;
+    height: 150vh;
+    border-radius: 5px;
 }
+
+
+.gameContainer{
+    display: grid;  
+    grid-gap: 2rem;
+    margin: 2rem;
+
+    grid-template-columns: repeat(auto-fill,minmax(26rem,1fr));  
+  
+}
+
+.singleGameContainer{
+    // background-color:var(--clr-primary-3);
+    background-color:#fff;
+    height: 50rem;
+    display:flex;
+    flex-direction: column;
+    // grid-template-rows: 30rem 1fr;
+    
+    
+}
+
+.imageContainer{
+    position: relative;
+    flex:20rem;
+   
+    // background-color:red;
+  
+}
+
+.imageTextContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color:rgba(5, 134, 157, 0.8)
+    
+}
+
+.ctaButton{
+    position:absolute;
+    top:50%;
+    left:50%;
+    z-index: 3;
+    font-size: 2rem;
+    color:#fff;
+    transform:translate(-50% ,50%)
+}
+
+
+.gameImage {
+            width: 100%;
+            height: 100%;
+        // display:inline-block
+
+}
+
+
+.textContainer{
+  flex:1;
+
+}
+
+

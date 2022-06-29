@@ -7,13 +7,12 @@ import  * as styles from './publisher.module.scss';
 
 
 interface Props{
-  publishersPS4: string[];
-  publishersPS5: string[];
+
 }
 
 
-const  Publisher :React.FC<Props> = ({publishersPS4,publishersPS5}) => {
-  const {state:{currentPlaystationPublisher,currentPlaystationPlatform},dispatch}  = useGameContext();
+const  Publisher :React.FC<Props> = () => {
+  const {state:{currentPlaystationPublisher,currentPlaystationPlatform,playstationPS4Publishers,playstationPS5Publishers},dispatch}  = useGameContext();
   
    
 const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -21,11 +20,11 @@ const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
   dispatch({type:ActionTypes.CHANGE_PLAYSTATION_PUBLISHER,payload: e.currentTarget.value})
 }
 
-let displayPublishersPS4 = publishersPS4.map((publisher,index)=>{
+let displayPublishersPS4 = playstationPS4Publishers.map((publisher,index)=>{
   return <option label={publisher} key={index} value={publisher} >{publisher}</option>
 })
 
-let displayPublishersPS5 = publishersPS5.map((publisher,index)=>{
+let displayPublishersPS5 = playstationPS5Publishers.map((publisher,index)=>{
   return <option label={publisher} key={index} value={publisher} >{publisher}</option>
 })
 

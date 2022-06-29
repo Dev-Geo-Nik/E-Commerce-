@@ -139,7 +139,7 @@ img{
   text-transform: uppercase;
   background: var(--clr-primary-1);
   color: var(--clr-text-1);
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 1.5rem;
   transition:var(--transition);
   display: inline-block;
   cursor: pointer;
@@ -154,7 +154,7 @@ img{
 }
 .btn-cta:hover {
 
-  background: var(--clr-primary-1-hover);
+  background: var(--clr-primary-5);
 }
 
 .btn-ghost{

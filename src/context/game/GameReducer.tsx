@@ -9,14 +9,49 @@ type ReducerType = (state : GameContextState ,action:Action) => GameContextState
 export const reducer : ReducerType = (state,action) => {
 switch (action.type) {
     
+    case  ActionTypes.SET_PLAYSTATION_GAMES_DATA:
+        return ({
+          ...state,
+          playstationPlatforms:action.payload.platforms,
+          playstationPS4Publishers:action.payload.publishersPS4,
+          playstationPS5Publishers:action.payload.publishersPS5,
+          playstationPS4Genre:action.payload.genresPS4,
+          playstationPS5Genre:action.payload.genresPS5,
+          gamesPS4:action.payload.gamesPS4,
+          gamesPS5:action.payload.gamesPS5
+       
+
+        }
+      );
     case  ActionTypes.CHANGE_PLAYSTATION_PLATFORM:
+
+        // if (action.payload === "playstation 5") {
+        //   return ({
+        //     ...state,
+        //     currentPlaystationPlatform:action.payload,
+        //     currentPlaystationPublisher:action.payload.publishersPS5,
+        //     currentPlaystationGenre:action.payload.genresPS5
+        //   }
+        // );
+        // }
+        // if (action.payload === "playstation 4") {
+        //   return ({
+        //     ...state,
+        //     currentPlaystationPlatform:action.payload,
+        //     currentPlaystationPublisher:action.payload.publishersPS4,
+        //     currentPlaystationGenre:action.payload.genresPS4
+        //   }
+        // );
+    
+        // }
         return ({
           ...state,
           currentPlaystationPlatform:action.payload,
-          currentPlaystationGenre:"All Genres",
-          currentPlaystationPublisher:"All Genres Publishers"
+          currentPlaystationPublisher:"All Publishers",
+          currentPlaystationGenre:"All Genres"
         }
       );
+      
     case  ActionTypes.CHANGE_PLAYSTATION_PUBLISHER:
         return ({
           ...state,
@@ -27,6 +62,14 @@ switch (action.type) {
         return ({
           ...state,
           currentPlaystationGenre:action.payload
+        }
+      );
+
+    case  ActionTypes.RESET_PLAYSTATION_FILTERS:
+        return ({
+          ...state,
+          currentPlaystationPublisher:"All Publishers",
+          currentPlaystationGenre:"All Genres"
         }
       );
 
