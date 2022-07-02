@@ -8,7 +8,7 @@ import Platform from './Platform';
 import Publisher from './Publisher';
 
 
-export type QueryPropsCategory = {
+export type QueryPropsCategory  = {
   
     allStrapiPlaystationGame: {
       nodes: Array<{
@@ -39,6 +39,7 @@ export type QueryPropsCategory = {
               }
             }
           }
+          url: string
         }
         price: number
         stock: string
@@ -49,7 +50,11 @@ export type QueryPropsCategory = {
         language: string
         platform: string
         pegi: number
+        status: string
         id: string
+        strapi_id: number
+        preOrder?: boolean
+        edition?: string
       }>
     }
   
@@ -57,35 +62,40 @@ export type QueryPropsCategory = {
 }
 
 const query = graphql`
-{
-  allStrapiPlaystationGame {
-    nodes {
-      title
-      description {
-        data {
-          description
-        }
-      }
-      image {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(width: 200, placeholder: TRACED_SVG, formats: WEBP)
+  {
+    allStrapiPlaystationGame {
+      nodes {
+        title
+        description {
+          data {
+            description
           }
         }
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 200, placeholder: TRACED_SVG, formats: WEBP)
+            }
+          }
+          url
+        }
+        price
+        stock
+        slug
+        videoUrl
+        publisher
+        genre
+        status
+        language
+        platform
+        pegi
+        id
+        strapi_id
+        preOrder
+        edition
       }
-      price
-      stock
-      slug
-      videoUrl
-      publisher
-      genre
-      language
-      platform
-      pegi
-      id
     }
   }
-}
 `
 
 

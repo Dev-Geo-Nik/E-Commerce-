@@ -22,8 +22,12 @@
     display:flex;
     flex-direction: column;
     // grid-template-rows: 30rem 1fr;
-    
-    
+    transition: var(--transition);
+
+   &:hover{
+    transform: translateY(-0.8rem);
+     
+   } 
 }
 
 .imageContainer{
@@ -36,6 +40,7 @@
 
 .imageTextContainer{
     position: absolute;
+    // display:none;
     top: 0;
     left: 0;
     right: 0;

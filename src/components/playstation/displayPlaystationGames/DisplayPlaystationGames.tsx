@@ -14,8 +14,25 @@ const  DisplayPlaystationGames :React.FC = () => {
   
 
     let displayGames = currentGames.map((game:any,index)=>{
-      const {title,description,image:{localFile:{childImageSharp:{gatsbyImageData}}},price,slug,videoUrl,publisher,genre,language} = game;
-            console.log(gatsbyImageData)
+
+      const {title,
+           description,
+           image:{url,localFile:{childImageSharp:{gatsbyImageData}}},
+           price,
+           slug,
+           videoUrl,
+           publisher,
+           genre,
+           language,
+           pegi,
+           stock,
+           edition,
+           preOrder,
+           strapi_id,
+           status
+        } = game;
+
+            console.log(status)
         if(currentPlaystationPublisher != "All Publishers"){
             if (publisher.trim() != currentPlaystationPublisher) {
                 return false
