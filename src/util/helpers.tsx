@@ -1,5 +1,6 @@
 
 import * as yup from 'yup';
+import { PlaystationGameStatus } from '../context/Constants';
 
 export const validationSchema = yup.object().shape({
   name:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
@@ -11,11 +12,12 @@ export const validationSchema = yup.object().shape({
   textarea:yup.string()
 })
 
-export const contactFormSchema = yup.object().shape({
-  name:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
+export const registerUserSchema = yup.object().shape({
+  username:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
   email:yup.string().email("Please insert a valid email address").required("Email is required"),
-  textarea:yup.string().required("Message is required"),
+  password:yup.string().min(6 ,"Password must be at least 2 characters").required("Password is required"),
   question:yup.string().required("Question is required"),
+  
 
 })
 
@@ -54,3 +56,31 @@ export function getRandomNumberBetween(min:number,max:number){
 
 
 
+
+// export const  findCurrentStatus = (status:string)=>{
+
+//   switch (status) {
+//     case PlaystationGameStatus.BEST_SELLER:
+//        return PlaystationGameStatus.BEST_SELLER
+
+//     case PlaystationGameStatus.HOT:
+//        return PlaystationGameStatus.HOT
+       
+//     case PlaystationGameStatus.NEW:
+//        return PlaystationGameStatus.NEW
+       
+//     case  PlaystationGameStatus.ON_SALE:
+//        return PlaystationGameStatus.ON_SALE;
+       
+//     case  PlaystationGameStatus.PRE_ORDER:
+//        return  PlaystationGameStatus.PRE_ORDER
+
+//     case PlaystationGameStatus.TRENDING:
+//        return  PlaystationGameStatus.TRENDING
+
+  
+//     default:
+//       null;
+//   }
+
+// }

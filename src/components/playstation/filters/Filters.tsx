@@ -1,12 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useEffect, useState } from 'react';
-import { ActionTypes } from '../../../context/Constants';
+import { ActionTypes, PlaystationSingleGameType } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
 import  * as styles from './filters.module.scss';
 import Genre from './Genre';
 import Platform from './Platform';
 import Publisher from './Publisher';
-
+import {PlaystationGameType} from "../../../context/Constants";
 
 export type QueryPropsCategory  = {
   
@@ -93,6 +93,7 @@ const query = graphql`
         strapi_id
         preOrder
         edition
+        discountPrice
       }
     }
   }
@@ -110,8 +111,10 @@ const  Filters :React.FC = () => {
   const publishersPS5 :string[] = []
   const genresPS5 :string[] = []
 
-  const gamesPS4 :any= [];
-  const gamesPS5 :any= [];
+ 
+  const gamesPS4 :any  = [];
+  const gamesPS5 :any  = [];
+
 
   queryData.allStrapiPlaystationGame.nodes.map((game:any) => {
 

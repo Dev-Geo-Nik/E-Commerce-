@@ -1,3 +1,5 @@
+@import "../../../assets/css/animations.scss";
+
 .container{
     grid-column:  2 / 14;
     background-color:var(--clr-background-2);
@@ -16,7 +18,7 @@
 }
 
 .singleGameContainer{
-    // background-color:var(--clr-primary-3);
+    position: relative;
     background-color:#fff;
     height: 50rem;
     display:flex;
@@ -25,8 +27,14 @@
     transition: var(--transition);
 
    &:hover{
-    transform: translateY(-0.8rem);
-     
+    animation:flopCard 1s forwards ;
+    animation-iteration-count: 1;
+   
+    // transform: translateY(-0.8rem);
+
+     .imageTextContainer{
+        display: block;
+     }
    } 
 }
 
@@ -40,7 +48,7 @@
 
 .imageTextContainer{
     position: absolute;
-    // display:none;
+    display:none;
     top: 0;
     left: 0;
     right: 0;
@@ -54,10 +62,25 @@
     position:absolute;
     top:50%;
     left:50%;
-    z-index: 3;
-    font-size: 2rem;
+    z-index: 3; 
+    transform:translate(-50% ,50%);
+    text-transform: uppercase;
+    background: var(--clr-primary-1);
     color:#fff;
-    transform:translate(-50% ,50%)
+    padding: 0.6rem 1.5rem;
+    transition:var(--transition);
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem; 
+    font-size: 1.8rem;
+    font-family: var(--ff-primary-1);
+    font-weight: bold;
+
+    &:hover{
+        background: var(--clr-primary-4);
+        color:#000;
+    }
 }
 
 
@@ -70,8 +93,90 @@
 
 
 .textContainer{
-  flex:1;
+   height: 15rem;
+   display:flex;
+   flex-direction: column;
+   justify-content:space-evenly;
+   margin:0 1rem;
+}
 
+.ratingContainer{
+    color:#fff;
+    font-size:1.6rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
 }
 
 
+
+
+.pegiText{
+    color:var(--clr-primary-4);
+}
+
+.genreContainer{
+    position:absolute;
+    color:#fff;
+    font-size:1.6rem;
+    left: 0.5rem;
+    bottom:1rem;
+}
+
+.genreText{
+    color:var(--clr-primary-4);
+  
+    
+}
+
+
+.gameTitle{
+    // margin:1rem 1rem 2rem 1rem;
+    font-size: 1.6rem;
+    font-weight:600;
+}
+
+.gameEdition{
+    font-size: 1.4rem;
+    font-weight:300;
+    // margin:1rem;
+}  
+
+.normalPrice{
+    float: right;
+    // margin:1rem;
+    font-size: 3rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+}
+
+// Discount Prices styles
+
+
+
+.discountContainer{
+  float: right;
+//   display: flex;
+//   align-items: center;
+   
+  
+}
+
+.initialPrice{
+    text-decoration: line-through;
+    color:rgba(0, 0, 0, 0.6);
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-left:1rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+
+}
+.discountPrice{
+    font-size: 3rem;
+    color: var(--clr-primary-1);
+    display: inline-block;
+    font-family: "Montserrat";
+    font-weight: 500;
+   
+}

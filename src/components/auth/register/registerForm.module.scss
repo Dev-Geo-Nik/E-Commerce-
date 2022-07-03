@@ -1,0 +1,49 @@
+
+.container{
+
+     label{
+          display: block;
+          font-size: 1.6rem;
+     }
+     
+
+      
+ form{
+
+       /* background: red; */
+       height: 100%;
+       width: 40rem;
+       
+   }
+
+   input{
+     padding: 1rem;
+     border-radius: 0.5rem;
+     width: 100%;
+   
+   }
+}
+
+
+.errorText{
+     font-size: 1.7rem;
+     font-weight: bold;
+     color:#ff1616;
+     margin: 1rem 0 2rem 0;
+   }
+
+.errorGhost{
+     font-size: 1.7rem;
+     margin: 1rem 0 2rem 0;
+     opacity: 0;
+}
+
+.spinnerImage{
+     position: absolute;
+     top: 0%;
+     left: 50%;
+     transform: translate(-50% ,10%);    
+     z-index: 2;    
+     width: 15rem;
+     
+}

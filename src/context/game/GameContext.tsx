@@ -1,5 +1,5 @@
 import React,{createContext,Dispatch,ReactNode,useContext,useReducer} from 'react';
-import { Action } from '../Constants';
+import { Action, PlaystationSingleGameType } from '../Constants';
 import { reducer } from './GameReducer';
 
 
@@ -12,8 +12,8 @@ export interface GameContextState {
       playstationPS5Publishers:string[] 
       playstationPS4Genre:string[] 
       playstationPS5Genre:string[]
-      gamesPS4:[],
-      gamesPS5:[]
+      gamesPS4:PlaystationSingleGameType | [],
+      gamesPS5:PlaystationSingleGameType | []
       
       
     

@@ -23,27 +23,7 @@ switch (action.type) {
 
         }
       );
-    case  ActionTypes.CHANGE_PLAYSTATION_PLATFORM:
-
-        // if (action.payload === "playstation 5") {
-        //   return ({
-        //     ...state,
-        //     currentPlaystationPlatform:action.payload,
-        //     currentPlaystationPublisher:action.payload.publishersPS5,
-        //     currentPlaystationGenre:action.payload.genresPS5
-        //   }
-        // );
-        // }
-        // if (action.payload === "playstation 4") {
-        //   return ({
-        //     ...state,
-        //     currentPlaystationPlatform:action.payload,
-        //     currentPlaystationPublisher:action.payload.publishersPS4,
-        //     currentPlaystationGenre:action.payload.genresPS4
-        //   }
-        // );
-    
-        // }
+    case  ActionTypes.CHANGE_PLAYSTATION_PLATFORM: 
         return ({
           ...state,
           currentPlaystationPlatform:action.payload,

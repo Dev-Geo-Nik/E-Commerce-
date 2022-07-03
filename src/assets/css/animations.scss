@@ -1,0 +1,37 @@
+@keyframes slideRight {
+    0% {
+      transform: translateX(20px);
+      /* opacity: 0; */
+    }
+    100% {
+      transform: translateX(0);
+      /* opacity: 1; */
+    }
+  }
+  
+@keyframes slideHeart {
+    0% {
+      
+      transform:translateY(-10px)  ;
+      opacity: 0; 
+    }
+    100% {
+      transform:translateX(0);
+     
+      opacity: 1; 
+    }
+  }
+  
+
+  @keyframes flopCard {
+    0% {
+      
+      transform:rotateY(180deg);
+      
+    }
+    100% {
+        transform:rotateY(0) 
+     
+    
+    }
+  }
