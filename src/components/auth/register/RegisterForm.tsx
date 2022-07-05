@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { getRandomNumberBetween, registerUserSchema } from '../../../util/helpers';
 import Spinner  from "../../../assets/images/spinner.gif"
+import RegisterSuccess from './RegisterSuccess';
 
 type RegisterUser  = { 
     username:string,
@@ -18,9 +19,10 @@ const value2 = getRandomNumberBetween(1,5)
 const total = value1 + value2
 
 const  RegisterForm :React.FC = () => {
-  const [isLoading,setIsLoading] = useState(true);
+  const [isLoading,setIsLoading] = useState(false);
   const [response ,setResponse] = useState({
     success:false,
+    areErrors:"",
     message:""
   })
 
@@ -42,7 +44,7 @@ const  RegisterForm :React.FC = () => {
 
 
     const onSubmit = (formData: RegisterUser) => {
-      console.log("in")
+ 
    
       const postData = async()=>{
       
@@ -69,14 +71,18 @@ const  RegisterForm :React.FC = () => {
         }
 
           try {
+
             console.log("Trying to create new user")
+            setIsLoading(true)
+
             const res = await fetch("http://localhost:1340/api/auth/local/register",request)
             const data = await res.json();
-          
             if (data) {
-              console.log(data)
+              setIsLoading(false)
+              // console.log(data)
                 setResponse({
-                  success: data.success,
+                  ...response,
+                  success: true,
                   message:data.message
                 })
               console.log(data)
@@ -84,6 +90,10 @@ const  RegisterForm :React.FC = () => {
             
           } catch (error) {
               console.log(error)
+              setIsLoading(false)
+              setResponse({
+                ...response,
+              })
           }    
     
 }
@@ -92,6 +102,8 @@ postData()
 
 };
 
+
+
   return (
 <div className={styles.container}>
   {isLoading && 
@@ -99,8 +111,8 @@ postData()
       <img src={Spinner} alt=" indicating loading image"  className={styles.spinnerImage}/>
   </div>    }
   
-
-  <form onSubmit={handleSubmit(onSubmit)} className="form">
+    {response.success && <RegisterSuccess/> }
+{ !response.success ?  <form onSubmit={handleSubmit(onSubmit)} className="form">
     <label htmlFor="Userusername">Username*</label>
     <input type="text"  {...register('username')}  className={` ${errors.username ? 'is-invalid' : ''}`}  />
     {errors.username  ? <p className={styles.errorText}>{errors.username.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
@@ -120,7 +132,7 @@ postData()
     {errors.question  ? <p className={styles.errorText}>{errors.question.message}</p>   : questionError  ? <p className={styles.errorText}>{questionError}</p>  : <p className={styles.errorGhost}>No Error</p>}  
 
     <button className="btn-cta" type="submit">Send message</button>
-  </form>
+  </form> : null}
 
 </div>
 );

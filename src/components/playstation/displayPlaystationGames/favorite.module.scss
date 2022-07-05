@@ -1,71 +1,60 @@
-
 @import "../../../assets/css/animations.scss";
 
-.backgroundCircle{
-    position:absolute;
+.backgroundCircle {
+    position: absolute;
     right: 1rem;
     top: 1rem;
-    border-radius:50%;
-    border:2px solid #fff;
-    padding:0.6rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    padding: 0.6rem;
     // transition:var(--transition);
 
-    &:hover{
-      background-color:var(--clr-primary-1);
+    &:hover {
+        background-color: var(--clr-primary-1);
 
-      .heartIcon{
-        animation:slideHeart 0.5s;
-      }
-    }
-}
-
-.circle{
-  
-   
-  
-    &:hover{
-      
-        .textModalContainer{
-            animation:slideRight 0.5s ;
-            display:block;
+        .heartIcon {
+            animation: slideHeart 0.5s;
         }
     }
 }
 
-.heartIcon{
+.circle {
+    &:hover {
+        .textModalContainer {
+            animation: slideRight 0.5s;
+            display: block;
+        }
+    }
+}
+
+.heartIcon {
     font-size: 3rem;
-    color:#fff;
+    color: #fff;
 }
 
-.textModalContainer{
-    display:none;
-   
+.textModalContainer {
+    display: none;
 }
 
-
-.textModal{
-    position:absolute;
+.textModal {
+    position: absolute;
     top: 8rem;
     right: 2rem;
-    background-color:#fff;
-    display:block;
-    padding:0.6rem;
+    background-color: #fff;
+    display: block;
+    padding: 0.6rem;
     font-size: 1.6rem;
     z-index: 1;
-   
-   
+    border: none;
 }
-.modalBackground{
-    position:absolute;
-    background-color:#000;
+.modalBackground {
+    position: absolute;
+    background-color: #000;
     top: 7.5rem;
     right: 2.5rem;
     width: 2rem;
     height: 2rem;
-    background-color:#fff;
+    background-color: #fff;
     transform: rotate(45deg);
+    border: none;
 }
-
-
-
-
