@@ -52,6 +52,12 @@ switch (action.type) {
           currentPlaystationGenre:"All Genres"
         }
       );
+    case  ActionTypes.TOGGLE_LOADING:
+        return ({
+          ...state,
+          isLoading:action.payload
+        }
+      );
 
 
     default:

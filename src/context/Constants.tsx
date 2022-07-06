@@ -3,7 +3,8 @@ export enum ActionTypes {
     CHANGE_PLAYSTATION_PLATFORM = "CHANGE_PLAYSTATION_PLATFORM",
     CHANGE_PLAYSTATION_PUBLISHER = "CHANGE_PLAYSTATION_PUBLISHER",
     CHANGE_PLAYSTATION_GENRE = "CHANGE_PLAYSTATION_GENRE",
-    RESET_PLAYSTATION_FILTERS = "RESET_PLAYSTATION_FILTERS"
+    RESET_PLAYSTATION_FILTERS = "RESET_PLAYSTATION_FILTERS",
+    TOGGLE_LOADING = "TOGGLE_LOADING",
  }
 
 
@@ -122,4 +123,11 @@ export enum PlaystationGameStatus{
     ON_SALE = "On-Sale",
     TRENDING = "Trending",
 
+}
+
+
+export type UserRegisterChecker ={
+  isUserRegistered:boolean,
+  message:string,
+  errorMessages:string[] 
 }

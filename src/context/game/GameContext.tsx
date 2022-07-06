@@ -1,5 +1,5 @@
 import React,{createContext,Dispatch,ReactNode,useContext,useReducer} from 'react';
-import { Action, PlaystationSingleGameType } from '../Constants';
+import { Action, PlaystationSingleGameType, UserRegisterChecker } from '../Constants';
 import { reducer } from './GameReducer';
 
 
@@ -13,7 +13,10 @@ export interface GameContextState {
       playstationPS4Genre:string[] 
       playstationPS5Genre:string[]
       gamesPS4:PlaystationSingleGameType | [],
-      gamesPS5:PlaystationSingleGameType | []
+      gamesPS5:PlaystationSingleGameType | [],
+      userJWT :string
+      isLoading: boolean,
+     
       
       
     
@@ -32,6 +35,8 @@ const initialState : GameContextState = {
     playstationPS5Genre: [],
     gamesPS4:[],
     gamesPS5: [],
+    userJWT:"",
+    isLoading:false
 
   
 

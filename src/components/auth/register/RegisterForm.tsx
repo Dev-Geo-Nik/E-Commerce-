@@ -3,8 +3,11 @@ import * as styles from "./registerForm.module.scss";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { getRandomNumberBetween, registerUserSchema } from '../../../util/helpers';
-import Spinner  from "../../../assets/images/spinner.gif"
+
 import RegisterSuccess from './RegisterSuccess';
+import { useGameContext } from '../../../context/game/GameContext';
+import Spinner from './Spinner';
+import { ActionTypes } from '../../../context/Constants';
 
 type RegisterUser  = { 
     username:string,
@@ -19,15 +22,14 @@ const value2 = getRandomNumberBetween(1,5)
 const total = value1 + value2
 
 const  RegisterForm :React.FC = () => {
-  const [isLoading,setIsLoading] = useState(false);
-  const [response ,setResponse] = useState({
-    success:false,
-    areErrors:"",
-    message:""
-  })
+
+  const {state:{isLoading},dispatch}  = useGameContext();
+  const [success,setSuccess] = useState(false);
+  const  [isError,setIsError] = useState(false)
+  const  [errorMessage,setErrorMessage] = useState("")
+  const [questionError, setQuestionError] = useState("")
 
 
-    const [questionError, setQuestionError] = useState("")
 
     const {
       register,
@@ -72,28 +74,36 @@ const  RegisterForm :React.FC = () => {
 
           try {
 
-            console.log("Trying to create new user")
-            setIsLoading(true)
+            dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:true})
 
             const res = await fetch("http://localhost:1340/api/auth/local/register",request)
             const data = await res.json();
-            if (data) {
-              setIsLoading(false)
-              // console.log(data)
-                setResponse({
-                  ...response,
-                  success: true,
-                  message:data.message
-                })
-              console.log(data)
+          
+
+            if (data.user) {
+              // console.log(data.jwt)
+              // console.log(data.user)
+              dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
+          
+              setSuccess(true)
+              setErrorMessage("")
+           }      
+         
+          if (data.error) {
+                dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
+                let message = data.error.message.includes("Email") ? data.error.message :"Username is already taken"
+                setIsError(true)
+                setErrorMessage(message)
+          
             }
+
+
             
-          } catch (error) {
-              console.log(error)
-              setIsLoading(false)
-              setResponse({
-                ...response,
-              })
+          } catch (err:any) {
+              setIsError(true)
+              setErrorMessage(err.message)
+              dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
+            
           }    
     
 }
@@ -102,39 +112,43 @@ postData()
 
 };
 
-
+  
+    
 
   return (
-<div className={styles.container}>
-  {isLoading && 
-  <div className="modal">
-      <img src={Spinner} alt=" indicating loading image"  className={styles.spinnerImage}/>
-  </div>    }
+
+
+<div className={styles.formWrapper}>
+    {isError && <p className={styles.errorsMessageText}>{errorMessage}</p>}
+
   
-    {response.success && <RegisterSuccess/> }
-{ !response.success ?  <form onSubmit={handleSubmit(onSubmit)} className="form">
-    <label htmlFor="Userusername">Username*</label>
-    <input type="text"  {...register('username')}  className={` ${errors.username ? 'is-invalid' : ''}`}  />
-    {errors.username  ? <p className={styles.errorText}>{errors.username.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
- 
+   { success ? 
+   <RegisterSuccess/>:
 
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <label htmlFor="Userusername">Username*</label>
+      <input type="text"  {...register('username')}  className={` ${errors.username ? 'is-invalid' : ''}`}  />
+      {errors.username  ? <p className={styles.errorText}>{errors.username.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
 
-    <label htmlFor="Email">Email*</label>
-    <input  type="email"  {...register('email')}  className={`form-control ${errors.email ? 'is-invalid' : ''}`}/>
-    {errors.email  ? <p className={styles.errorText}>{errors.email.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}  
-    
-    <label htmlFor="Password">Password*</label>
-    <input type="password"  {...register('password')}  className={` ${errors.password ? 'is-invalid' : ''}`}  />
-    {errors.username  ? <p className={styles.errorText}>{errors.password?.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
+      <label htmlFor="Email">Email*</label>
+      <input  type="email"  {...register('email')}  className={`form-control ${errors.email ? 'is-invalid' : ''}`}/>
+      {errors.email  ? <p className={styles.errorText}>{errors.email.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}  
+      
+      <label htmlFor="Password">Password*</label>
+      <input type="password"  {...register('password')}  className={` ${errors.password ? 'is-invalid' : ''}`}  />
+      {errors.username  ? <p className={styles.errorText}>{errors.password?.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
 
-    <label htmlFor="question">What is {value1} + {value2}?*</label>
-    <input  type="text"  {...register('question')}  className={`form-control ${errors.question ? 'is-invalid' : ''}`}/>
-    {errors.question  ? <p className={styles.errorText}>{errors.question.message}</p>   : questionError  ? <p className={styles.errorText}>{questionError}</p>  : <p className={styles.errorGhost}>No Error</p>}  
+      <label htmlFor="question">What is {value1} + {value2}?*</label>
+      <input  type="text"  {...register('question')}  className={`form-control ${errors.question ? 'is-invalid' : ''}`}/>
+      {errors.question  ? <p className={styles.errorText}>{errors.question.message}</p>   : questionError  ? <p className={styles.errorText}>{questionError}</p>  : <p className={styles.errorGhost}>No Error</p>}  
 
-    <button className="btn-cta" type="submit">Send message</button>
-  </form> : null}
+      <button className="btn-cta" type="submit">Send message</button>
+    </form> 
+    } 
 
 </div>
+
+
 );
 };
 
