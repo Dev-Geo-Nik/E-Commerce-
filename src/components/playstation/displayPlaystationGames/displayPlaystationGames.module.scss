@@ -27,10 +27,10 @@
     transition: var(--transition);
 
    &:hover{
-    animation:flopCard 1s forwards ;
-    animation-iteration-count: 1;
+    // animation:flopCard 1s forwards ;
+    // animation-iteration-count: 1;
    
-    // transform: translateY(-0.8rem);
+    transform: translateY(-0.8rem);
 
      .imageTextContainer{
         display: block;

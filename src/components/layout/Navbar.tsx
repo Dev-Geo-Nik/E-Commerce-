@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import  * as styles from './navbar.module.scss';
 import Logo from "../../assets/images/logo.svg"
 import { Link } from 'gatsby';
-import { FaHeart, FaPlaystation, FaShoppingCart, FaUserCog, FaUserPlus, FaUserTag, FaXbox } from "react-icons/fa";
+import {  FaPlaystation, FaShoppingCart, FaUserCog, FaUserPlus, FaUserTag, FaXbox } from "react-icons/fa";
+import { useGameContext } from '../../context/game/GameContext';
 
 const active = {
      background: "#5e5b5b",
@@ -14,7 +15,12 @@ const active = {
 // <div className={`${styles.text} ${styles.class}`}></div>
 
 const  Navbar :React.FC = () => {
+   
+     // console.log(localStorage.getItem("userJWT"))
+     const userJWT = localStorage.getItem("userJWT")
+     const username = localStorage.getItem("username")
 
+  
   return (
 <nav className={styles.nav}>
       <ul>
@@ -36,22 +42,22 @@ const  Navbar :React.FC = () => {
                          Xbox
                   </Link>
                </li>
-               <li>
+               <li className ={ userJWT ? styles.displayNone : styles.displayBlock}>
                     <Link to="/app/login" activeStyle={active}>
                     <FaUserTag className={styles.icon}/> 
                          Sign In
                   </Link>
                </li>
-               <li>
+               <li className ={ userJWT ? styles.displayNone : styles.displayBlock}>
                     <Link to="/app/register" activeStyle={active}>
-                    <FaUserPlus className={styles.icon}/> 
+                    <FaUserPlus className={ styles.icon}/> 
                          Sign Up
                     </Link>
                </li>
-               <li>
+               <li className ={ userJWT ? styles.displayBlock : styles.displayNone  }>
                     <Link to="/app/account" activeStyle={active}>
                     <FaUserCog className={styles.icon}/> 
-                        My Account
+                       {userJWT ?  username : "My Account"}
                      </Link>
                </li>
                <li className={styles.linkCart}>

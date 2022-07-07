@@ -1,6 +1,6 @@
 import React from 'react';
 import  * as styles from './spinner.module.scss';
-import SpinnerGif  from "../../../assets/images/spinner.gif"
+import SpinnerGif  from "../../assets/images/spinner.gif"
 
 
 const  Spinner :React.FC = () => {

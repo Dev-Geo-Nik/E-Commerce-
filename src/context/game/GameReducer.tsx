@@ -58,6 +58,12 @@ switch (action.type) {
           isLoading:action.payload
         }
       );
+    case  ActionTypes.LOGIN_USER:
+        return ({
+          ...state,
+          userJWT:action.payload
+        }
+      );
 
 
     default:

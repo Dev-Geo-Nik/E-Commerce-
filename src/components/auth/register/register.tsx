@@ -6,12 +6,15 @@ import Navbar from '../../layout/Navbar';
 import SEO from '../../layout/Seo';
 import  * as styles from './register.module.scss';
 import RegisterForm from './RegisterForm';
-import Spinner from './Spinner';
+import Spinner from '../../spinner/Spinner';
+
+interface Props {
+  path: string;
+}
 
 
 
-
-const  register :React.FC = () => {
+const  register :React.FC<Props> = () => {
   const {state:{isLoading}} = useGameContext()
 
   return (

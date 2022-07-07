@@ -1,0 +1,59 @@
+
+.formWrapper{
+
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background-color:rgba(0, 0,0 ,0.5);
+    z-index: 2;
+    // height: 50rem;
+
+    label{
+         display: block;
+         font-size: 1.6rem;
+         margin-bottom: 0.4rem;
+    }
+    
+
+     
+form{
+
+      /* background: red; */
+   
+       width: 40rem;
+       padding: 2rem;
+      
+  }
+
+  input{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  
+  }
+}
+
+
+.errorText{
+    font-size: 1.6rem;
+    font-weight: bold;
+    color:#ff1616;
+    margin: 1rem 0 2rem 0;
+   
+  }
+
+.errorGhost{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 1rem 0 2rem 0;
+    opacity: 0;
+}
+
+
+.errorsMessageText{
+    font-size: 2rem;
+    padding:1rem;
+    color:#ff1616;
+}

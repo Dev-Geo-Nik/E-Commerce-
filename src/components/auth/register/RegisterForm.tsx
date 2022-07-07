@@ -3,10 +3,9 @@ import * as styles from "./registerForm.module.scss";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { getRandomNumberBetween, registerUserSchema } from '../../../util/helpers';
-
 import RegisterSuccess from './RegisterSuccess';
 import { useGameContext } from '../../../context/game/GameContext';
-import Spinner from './Spinner';
+import Spinner from '../../spinner/Spinner';
 import { ActionTypes } from '../../../context/Constants';
 
 type RegisterUser  = { 
@@ -142,7 +141,7 @@ postData()
       <input  type="text"  {...register('question')}  className={`form-control ${errors.question ? 'is-invalid' : ''}`}/>
       {errors.question  ? <p className={styles.errorText}>{errors.question.message}</p>   : questionError  ? <p className={styles.errorText}>{questionError}</p>  : <p className={styles.errorGhost}>No Error</p>}  
 
-      <button className="btn-cta" type="submit">Send message</button>
+      <button className="btn-cta" type="submit">Sign Up</button>
     </form> 
     } 
 

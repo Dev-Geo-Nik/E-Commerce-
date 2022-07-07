@@ -15,11 +15,13 @@ import Account from '../../components/account/Account';
 
 // Here can use my dynamic routes
 const App: React.FC = () => {
+  const userJWT = localStorage.getItem("userJWT")
 
   return (
 
 
       <MyRouter basepath="/app">
+      
          <Cart  path="/cart"/>
         <Login path="/login" /> 
         <Register path="/register" />

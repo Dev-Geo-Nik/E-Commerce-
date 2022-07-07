@@ -21,6 +21,14 @@ export const registerUserSchema = yup.object().shape({
 
 })
 
+export const loginUserSchema = yup.object().shape({
+  username:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
+  password:yup.string().min(6 ,"Password must be at least 2 characters").required("Password is required"),
+  question:yup.string().required("Question is required"),
+  
+
+})
+
 export const oderIdSchema =  yup.object().shape({
 
   orderId: yup.string().required("Order ID is required"),

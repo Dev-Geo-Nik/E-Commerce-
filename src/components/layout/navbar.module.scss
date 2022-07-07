@@ -37,7 +37,7 @@ height: 12rem;
   display: flex;
   
   li{
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     transition: var(--transition);
     
     &:hover{
@@ -107,3 +107,9 @@ height: 12rem;
 
 
 
+.displayNone{
+  display: none;
+}
+.displayBlock{
+  display: block;
+}

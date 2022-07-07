@@ -1,8 +1,11 @@
 import { graphql  } from 'gatsby';
 import React from 'react';
+import Navbar from '../../../components/layout/Navbar';
+import SEO from '../../../components/layout/Seo';
+import DisplaySinglePlaystationGame from '../../../components/playstation/displaySingleGame/DisplaySinglePlaystationGame';
 import  * as styles from './singlePlaystationGamePage.module.scss';
 
-type SingleGameType = {
+export type SinglePlaystationGameType = {
 
     strapiPlaystationGame: {
       id: string
@@ -43,6 +46,7 @@ type SingleGameType = {
       pegi: number
       platform: string
       genre: string
+      discountPrice: string
       strapi_id: number
     }
  
@@ -54,17 +58,20 @@ interface Props{
     id: string,
     title: string,
   }
-  data:SingleGameType
+  data:SinglePlaystationGameType
 }
 
-// {pageContext:{title},data}:any
+
 const SinglePlaystationGamePage :React.FC<Props> = ({pageContext,data}) => {
-  
+    const{title,description} = data.strapiPlaystationGame;  
 
   return (
-<>
-    <h1>{data.strapiPlaystationGame.title}</h1>
-</>
+<div className={styles.singleGameContainer}> 
+      <SEO title={title} description={description.data.description} />
+     <Navbar/>
+     <DisplaySinglePlaystationGame gameData = {data}/>
+   
+</div>
 );
 };
 
@@ -97,6 +104,7 @@ query myQuery ($title: String) {
     pegi
     platform
     genre
+    discountPrice
     strapi_id
   }
 }
