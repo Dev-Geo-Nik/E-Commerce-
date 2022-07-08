@@ -13,17 +13,17 @@ export const validationSchema = yup.object().shape({
 })
 
 export const registerUserSchema = yup.object().shape({
-  username:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
+  username:yup.string().min(2 ,"Username must be at least 2 characters").required("Username is required"),
   email:yup.string().email("Please insert a valid email address").required("Email is required"),
-  password:yup.string().min(6 ,"Password must be at least 2 characters").required("Password is required"),
+  password:yup.string().min(6 ,"Password must be at least 6 characters").required("Password is required"),
   question:yup.string().required("Question is required"),
   
 
 })
 
 export const loginUserSchema = yup.object().shape({
-  username:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
-  password:yup.string().min(6 ,"Password must be at least 2 characters").required("Password is required"),
+  username:yup.string().min(2 ,"Username is required").required("Username is required"),
+  password:yup.string().min(6 ,"Password is required").required("Password is required"),
   question:yup.string().required("Question is required"),
   
 

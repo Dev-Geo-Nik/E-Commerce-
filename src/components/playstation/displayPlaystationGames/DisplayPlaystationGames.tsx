@@ -17,11 +17,11 @@ const  DisplayPlaystationGames :React.FC = () => {
     const {state:{gamesPS4,gamesPS5,currentPlaystationPlatform,currentPlaystationPublisher,currentPlaystationGenre}} = useGameContext();
     let currentGames = currentPlaystationPlatform === "playstation 4" ? gamesPS4 : gamesPS5;
     
-
-    // console.log(currentGames)
+    // Sort the displayed games.
+    let sortedCurrentGames = currentGames.sort((a,b)=>(a.title >b.title ? 1 :-1))
   
 
-    let displayGames = currentGames.map((game,index)=>{
+    let displayGames = sortedCurrentGames.map((game,index)=>{
      
       const {title,
            description,

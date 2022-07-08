@@ -16,9 +16,17 @@ const active = {
 
 const  Navbar :React.FC = () => {
    
-     // console.log(localStorage.getItem("userJWT"))
-     const userJWT = localStorage.getItem("userJWT")
-     const username = localStorage.getItem("username")
+     
+     const isBrowser = typeof window !== "undefined"
+     let userJWT;
+     let username;
+     
+     if (isBrowser) {
+     userJWT = localStorage.getItem("userJWT")
+     username = localStorage.getItem("username")
+     }  
+
+ 
 
   
   return (

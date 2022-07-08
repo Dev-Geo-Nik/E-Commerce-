@@ -91,7 +91,7 @@ const  LoginForm :React.FC = () => {
               dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
               // let message = data.error.message.includes("Email") ? data.error.message :"Username is already taken"
               setIsError(true)
-              setErrorMessage(data.error.message)
+              setErrorMessage("Invalid username or password ")
         
           }
 

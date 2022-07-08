@@ -15,7 +15,7 @@ import Account from '../../components/account/Account';
 
 // Here can use my dynamic routes
 const App: React.FC = () => {
-  const userJWT = localStorage.getItem("userJWT")
+
 
   return (
 
