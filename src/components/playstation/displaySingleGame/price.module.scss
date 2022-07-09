@@ -1,0 +1,28 @@
+.discountPriceSingle{
+    font-size: 3rem;
+    color: var(--clr-primary-1);
+    display: inline-block;
+    font-family: "Montserrat";
+    font-weight: 500;
+   
+}
+
+
+.initialPriceSingle{
+    text-decoration: line-through;
+    color:rgba(0, 0, 0, 0.6);
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-left:1rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+
+}
+
+.normalPriceSingle{
+    // float: right;
+    // margin:1rem;
+    font-size: 3rem;
+    font-family: "Montserrat";
+    font-weight: 500;
+}

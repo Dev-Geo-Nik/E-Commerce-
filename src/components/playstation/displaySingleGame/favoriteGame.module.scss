@@ -1,0 +1,68 @@
+@import "../../../assets/css/animations.scss";
+
+.backgroundCircle {
+    position: absolute;
+    right: 1rem;
+    bottom: -0.5rem;
+    border-radius: 50%;
+
+    border:1px solid #898D9A;
+    padding: 0.6rem;
+
+
+    &:hover {
+        background-color: #94D021;
+        border:1px solid var(--clr-primary-5);
+
+        .heartIcon {
+            // color:var(  --clr-primary-5);
+            color:#fff;
+            animation: slideHeartFromRight 0.5s;
+        }
+    }
+}
+
+.circle {
+  
+    &:hover {
+        .textModalContainer {
+            animation: slideRight 0.5s;
+            display: block;
+        }
+    }
+}
+
+.heartIcon {
+    font-size: 2.5rem;
+    color: #898D9A;
+    
+}
+
+.textModalContainer {
+    display: none;
+}
+
+.textModal {
+    position: absolute;
+    bottom: 0rem;
+    right: 8rem;
+    background-color:#94D021;
+    color:#fff;
+    font-weight: bold;
+    display: block;
+    padding: 0.6rem;
+    font-size: 1.6rem;
+    z-index: 1;
+    border: none;
+}
+.modalBackground {
+    position: absolute;
+    background-color:#94D021;
+    bottom: 0.5rem;
+    right: 7.5rem;
+    width: 2rem;
+    height: 2rem;
+   
+    transform: rotate(45deg);
+    border: none;
+}

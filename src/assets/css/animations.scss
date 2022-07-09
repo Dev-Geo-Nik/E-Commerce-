@@ -8,11 +8,24 @@
       /* opacity: 1; */
     }
   }
+
   
 @keyframes slideHeart {
     0% {
       
       transform:translateY(-10px)  ;
+      opacity: 0; 
+    }
+    100% {
+      transform:translateX(0);
+     
+      opacity: 1; 
+    }
+  }
+@keyframes slideHeartFromRight {
+    0% {
+      
+      transform:translateX(10px)  ;
       opacity: 0; 
     }
     100% {
