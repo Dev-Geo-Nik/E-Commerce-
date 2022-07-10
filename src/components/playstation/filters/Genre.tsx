@@ -16,10 +16,13 @@ const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
   dispatch({type:ActionTypes.CHANGE_PLAYSTATION_GENRE,payload: e.currentTarget.value})
 }
 
-let displayGenrePS4 = playstationPS4Genre.sort().map((genre,index)=>{
+let sortedPS4 = playstationPS4Genre.sort((a,b)=>(a >b ? 1 :-1))
+let sortedPS5 = playstationPS5Genre.sort((a,b)=>(a >b ? 1 :-1))
+
+let displayGenrePS4 = sortedPS4.map((genre,index)=>{
   return <option label={genre} key={index} value={genre} >{genre}</option>
 })
-let displayGenrePS5 = playstationPS5Genre.sort().map((gen,index)=>{
+let displayGenrePS5 =sortedPS5.map((gen,index)=>{
   return <option label={gen} key={index} value={gen} >{gen}</option>
 })
 

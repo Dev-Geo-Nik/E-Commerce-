@@ -1,6 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.slug}';
+import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.title}';
 import SaleStatus from '../displayPlaystationGames/SaleStatus';
 import  * as styles from './displaySinglePlaystationGame.module.scss';
 import ReactPlayer from 'react-player'
