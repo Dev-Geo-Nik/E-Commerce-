@@ -20,11 +20,16 @@ const handleChange = (e:React.ChangeEvent<HTMLSelectElement>)=>{
   dispatch({type:ActionTypes.CHANGE_PLAYSTATION_PUBLISHER,payload: e.currentTarget.value})
 }
 
-let displayPublishersPS4 = playstationPS4Publishers.map((publisher,index)=>{
+
+
+let sortedPS4 = playstationPS4Publishers.sort((a,b)=>(a >b ? 1 :-1))
+let sortedPS5 =playstationPS5Publishers .sort((a,b)=>(a >b ? 1 :-1))
+
+let displayPublishersPS4 = sortedPS4.map((publisher,index)=>{
   return <option label={publisher} key={index} value={publisher} >{publisher}</option>
 })
 
-let displayPublishersPS5 = playstationPS5Publishers.map((publisher,index)=>{
+let displayPublishersPS5 = sortedPS5.map((publisher,index)=>{
   return <option label={publisher} key={index} value={publisher} >{publisher}</option>
 })
 

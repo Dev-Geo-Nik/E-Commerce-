@@ -1,6 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.title}';
+import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.slug}';
 import SaleStatus from '../displayPlaystationGames/SaleStatus';
 import  * as styles from './displaySinglePlaystationGame.module.scss';
 import ReactPlayer from 'react-player'
@@ -15,7 +15,7 @@ import TitleContainer from './TitleContainer';
 
 
 const  DisplaySinglePlaystationGame :React.FC<Props> = ({gameData}) => {
-     const {strapiPlaystationGame:{title,genre,id,image,language,pegi,platform,price,publisher,stock,strapi_id,videoUrl,discountPrice,status,edition,description}} = gameData;
+     const {strapiPlaystationGame:{title,genre,id,image,language,pegi,platform,price,publisher,stock,strapi_id,videoUrl,discountPrice,status,edition,description,slug}} = gameData;
   
 
 

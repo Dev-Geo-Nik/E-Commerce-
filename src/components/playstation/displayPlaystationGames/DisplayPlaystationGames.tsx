@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { useGameContext } from '../../../context/game/GameContext';
 import  * as styles from './displayPlaystationGames.module.scss';
@@ -14,9 +14,24 @@ import SaleStatus from './SaleStatus';
 
 
 const  DisplayPlaystationGames :React.FC = () => {
-    const {state:{gamesPS4,gamesPS5,currentPlaystationPlatform,currentPlaystationPublisher,currentPlaystationGenre}} = useGameContext();
+
+    const {state:{gamesPS4,gamesPS5,currentPlaystationPlatform,currentPlaystationPublisher,currentPlaystationGenre,allFavorites}} = useGameContext();
     let currentGames = currentPlaystationPlatform === "playstation 4" ? gamesPS4 : gamesPS5;
     
+    const [hovered,setHovered] = useState(false)
+
+
+    const handleHover = (e:React.MouseEvent<HTMLDivElement>) =>{
+        const gameId = e.currentTarget.getAttribute("data-gameId")
+        const platform = e.currentTarget.getAttribute("data-platform")
+        console.log("Hovered")
+        setHovered(true)
+    }
+
+    const handleHoverLeave = ()=>{
+        setHovered(false)
+    }
+
     // Sort the displayed games.
     let sortedCurrentGames = currentGames.sort((a,b)=>(a.title >b.title ? 1 :-1))
   
@@ -38,10 +53,12 @@ const  DisplayPlaystationGames :React.FC = () => {
            edition,
            preOrder,
            strapi_id,
-           status
+           status,
+           favored,
+           platform
         } = game;
 
-        console.log(discountPrice)
+     
         if(currentPlaystationPublisher != "All Publishers"){
             if (publisher.trim() != currentPlaystationPublisher) {
                 return false
@@ -54,13 +71,13 @@ const  DisplayPlaystationGames :React.FC = () => {
         }
         
         return( 
-          <div className={styles.singleGameContainer} key={index}>
+          <div className={styles.singleGameContainer} key={index} onMouseEnter ={(e)=>handleHover(e)} onMouseLeave={handleHoverLeave}>
                 <SaleStatus status={status}/>
                 <div className={styles.imageContainer} >
                     {/* @ts-ignore */}
                      <GatsbyImage image={gatsbyImageData} alt={title} className={styles.gameImage} objectFit="fill"/>
-                     <div className={styles.imageTextContainer}>
-                         <Favorite/>
+                     <div className={styles.imageTextContainer}  data-gameId={[strapi_id]} data-platform={[platform]} >
+                        <Favorite gameID={strapi_id} platform={platform} hovered={hovered}/>
                             
                         <Link to={`/playstation/game/${slug}`} className={styles.ctaButton}>See More </Link>
                         <div className={styles.ratingContainer}>

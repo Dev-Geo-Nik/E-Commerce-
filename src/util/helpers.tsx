@@ -92,3 +92,29 @@ export function getRandomNumberBetween(min:number,max:number){
 //   }
 
 // }
+
+export const fetchAllFavorites = async(userJWT:string) =>{
+  let favoritesData = null
+  let favoritesErrors = null
+  const request = {
+   
+    headers: {
+     
+   
+      Authorization: `Bearer ${userJWT}`,
+    },
+   
+    }
+ 
+  try {
+      const res = await  fetch("http://localhost:1340/api/favorites",request);
+      favoritesData = await res.json();
+     
+
+    } catch (error) {
+      favoritesErrors = error
+    }
+
+return [favoritesData,favoritesErrors]
+
+}

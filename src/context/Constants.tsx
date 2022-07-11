@@ -6,6 +6,7 @@ export enum ActionTypes {
     RESET_PLAYSTATION_FILTERS = "RESET_PLAYSTATION_FILTERS",
     TOGGLE_LOADING = "TOGGLE_LOADING",
     LOGIN_USER = "LOGIN_USER",
+    FETCH_FAVORITES = "FETCH_FAVORITES",
  }
 
 
@@ -107,6 +108,7 @@ export type  PlaystationSingleGameType = [
     pegi: number
     status: string
     id: string
+    favored:boolean
     strapi_id: number
     preOrder?: boolean
     edition?: string
@@ -132,3 +134,5 @@ export type UserRegisterChecker ={
   message:string,
   errorMessages:string[] 
 }
+
+

@@ -48,6 +48,7 @@ export type SinglePlaystationGameType = {
       platform: string
       genre: string
       slug: string
+   
       edition: string
       discountPrice: string
       strapi_id: number
@@ -60,14 +61,16 @@ interface Props{
   pageContext:{
     id: string,
     title: string,
+    slug: string
   }
   data:SinglePlaystationGameType
 }
 
 
 const SinglePlaystationGamePage :React.FC<Props> = ({pageContext,data}) => {
-    const{title} = data.strapiPlaystationGame;  
-  console.log(title)
+    const{title,slug} = data.strapiPlaystationGame;  
+
+  console.log(slug)
   return (
 <div className={styles.singleGameContainer}> 
       <SEO title={title} />
@@ -82,8 +85,8 @@ export default SinglePlaystationGamePage
 
 
 export const query = graphql`
-query myQuery ($title: String) {
-  strapiPlaystationGame(title: {eq: $title}) {
+query myQuery ($slug: String) {
+  strapiPlaystationGame(slug: {eq: $slug}) {
     id
     title
     description {
@@ -110,6 +113,7 @@ query myQuery ($title: String) {
     genre
     slug
     status
+  
     discountPrice
     strapi_id
   }

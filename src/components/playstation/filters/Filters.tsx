@@ -48,13 +48,16 @@ export type QueryPropsCategory  = {
         publisher: string
         genre: string
         language: string
+    
         platform: string
         pegi: number
         status: string
         id: string
+        favored:boolean
         strapi_id: number
         preOrder?: boolean
         edition?: string
+        
       }>
     }
   
@@ -89,10 +92,12 @@ const query = graphql`
         language
         platform
         pegi
+        favored
         id
         strapi_id
         preOrder
         edition
+    
         discountPrice
       }
     }
@@ -116,6 +121,7 @@ const  Filters :React.FC = () => {
   const gamesPS5 :any  = [];
 
 
+ 
   queryData.allStrapiPlaystationGame.nodes.map((game:any) => {
 
 

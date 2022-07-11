@@ -11,6 +11,8 @@ const resetFilters = () => {
     dispatch({type:ActionTypes.RESET_PLAYSTATION_FILTERS})
 }
 
+
+
   return (
 <>
 <div className={styles.modal}></div>

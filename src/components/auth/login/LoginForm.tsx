@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ActionTypes } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
-import { getRandomNumberBetween, loginUserSchema } from '../../../util/helpers';
+import { fetchAllFavorites, getRandomNumberBetween, loginUserSchema } from '../../../util/helpers';
 import  * as styles from './loginForm.module.scss';
 
 
@@ -71,23 +71,32 @@ const  LoginForm :React.FC = () => {
           dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:true})
 
           const res = await fetch("http://localhost:1340/api/auth/local",request)
-          const data = await res.json();
-        console.log(data)
+          const userData = await res.json();
+        console.log(userData)
 
-          if (data.user) {
-            // console.log(data.jwt)
-            // console.log(data.user)
+          if (userData.user) {
+            // console.log(userData.jwt)
+            // console.log(userData.user)
             dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
             setErrorMessage("")
-            // dispatch({type:ActionTypes.LOGIN_USER,payload:data.jwt})
+            // dispatch({type:ActionTypes.LOGIN_USER,payload:userData.jwt})
 
          
-            window.localStorage.setItem("userJWT",data.jwt)
-            window.localStorage.setItem("username",data.user.username)
+            window.localStorage.setItem("userJWT",userData.jwt)
+            window.localStorage.setItem("username",userData.user.username)
+
+            const allFavorites = await  fetchAllFavorites(userData.jwt)
+            
+
+            const [data] = allFavorites;
+
+            window.localStorage.setItem("favorites",JSON.stringify(data.data))
+            // dispatch({type:ActionTypes.FETCH_FAVORITES,payload:data.data})
             navigate("/app/playstation")
+            
          }      
        
-        if (data.error) {
+        if (userData.error) {
               dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
               // let message = data.error.message.includes("Email") ? data.error.message :"Username is already taken"
               setIsError(true)

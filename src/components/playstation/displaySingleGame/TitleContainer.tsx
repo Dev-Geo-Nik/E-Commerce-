@@ -1,5 +1,5 @@
 import React from 'react';
-import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.title}';
+import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.slug}';
 import Button from './Button';
 import DeliveryStockContainer from './DeliveryStockContainer';
 import FavoriteGame from './FavoriteGame';
