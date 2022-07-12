@@ -6,9 +6,10 @@ import Stock from './Stock';
 
 interface Props {
     gameId:number
+    platform:string
 }
 
-const  DeliveryStockContainer :React.FC<Props> = ({gameId}) => {
+const  DeliveryStockContainer :React.FC<Props> = ({gameId,platform}) => {
 
     const [stock , setStock] = useState(1)
 
@@ -33,7 +34,7 @@ const  DeliveryStockContainer :React.FC<Props> = ({gameId}) => {
   <Stock stock = {stock}/>
   <div className={styles.deliveryTime}>Delivery time : {stock > 0 ? <span className={styles.deliverySpanText}>6-12 business days</span> : "unknown"}</div>
   <Button stock={stock} gameId={gameId}/>
-  <FavoriteGame/>
+  <FavoriteGame gameId={gameId} platform={platform}/>
 </>
 );
 };

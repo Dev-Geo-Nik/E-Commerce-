@@ -6,11 +6,10 @@ import  * as styles from './favorite.module.scss';
 interface Props {
   gameID:number
   platform: string
-  hovered:boolean
+ 
 }
 
-
-const  Favorite :React.FC<Props> = ({gameID,platform,hovered}) => {
+const  Favorite :React.FC<Props> = ({gameID,platform}) => {
   const {state:{allFavorites}} = useGameContext()
   // const [favored ,setFavored] = useState(false)
 
@@ -25,6 +24,7 @@ const  Favorite :React.FC<Props> = ({gameID,platform,hovered}) => {
         return
     }
 
+  
 
     const AddToFavorites =  async() =>{
 
@@ -65,8 +65,7 @@ const  Favorite :React.FC<Props> = ({gameID,platform,hovered}) => {
    }
 
 
-
-
+ 
   return (
 
     <div className={styles.circle} onClick={handlerClick}>
@@ -74,7 +73,7 @@ const  Favorite :React.FC<Props> = ({gameID,platform,hovered}) => {
           <IoIosHeartEmpty className = {styles.heartIcon}/>
         </div>
         <div className={styles.textModalContainer}>        
-            <p className={styles.textModal}>Add to Wishlist </p>
+            <p className={styles.textModal}>Add to Wishlist</p>
             <div className={styles.modalBackground}></div>
         </div>
     </div>
@@ -84,3 +83,48 @@ const  Favorite :React.FC<Props> = ({gameID,platform,hovered}) => {
 
 export default Favorite;
 
+
+
+
+
+// const gameId = e.currentTarget.getAttribute("data-game-id")
+// const platform = e.currentTarget.getAttribute("data-platform")
+// const user = localStorage.getItem("userJWT")
+// const payload ={
+//     data:{
+//         jwt:user,
+//         gameId: gameId,
+//         platform:platform
+//     }
+//   }
+// const request = {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+   
+//       Authorization: `Bearer ${localStorage.getItem("userJWT")}`,
+//     },
+//     body: JSON.stringify(
+//         payload
+//     )
+//     }
+//     const test = async () =>{
+
+//       try {
+//         const res = await  fetch(`http://localhost:1340/api/find-favorite`,request);
+//         const resData = await res.json();
+//         console.log(resData.userJWT)
+//         if ((resData.userJWT)) {
+//           // setHover(true)
+//           setFavored(true)
+//         }
+//       } catch (error) {
+//         console.log(error)
+//         setFavored(false)
+//       }
+//     }
+
+//     if (localStorage.getItem("userJWT")) {
+      
+//       test();
+//     }

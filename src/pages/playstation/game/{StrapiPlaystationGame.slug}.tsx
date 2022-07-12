@@ -70,7 +70,7 @@ interface Props{
 const SinglePlaystationGamePage :React.FC<Props> = ({pageContext,data}) => {
     const{title,slug} = data.strapiPlaystationGame;  
 
-  console.log(slug)
+  // console.log(slug)
   return (
 <div className={styles.singleGameContainer}> 
       <SEO title={title} />
