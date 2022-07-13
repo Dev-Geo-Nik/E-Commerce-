@@ -64,12 +64,7 @@ switch (action.type) {
           userJWT:action.payload
         }
       );
-    case  ActionTypes.FETCH_FAVORITES:
-        return ({
-          ...state,
-          allFavorites:action.payload
-        }
-      );
+  
 
 
     default:

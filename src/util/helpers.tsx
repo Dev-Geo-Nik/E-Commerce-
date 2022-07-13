@@ -65,33 +65,6 @@ export function getRandomNumberBetween(min:number,max:number){
 
 
 
-// export const  findCurrentStatus = (status:string)=>{
-
-//   switch (status) {
-//     case PlaystationGameStatus.BEST_SELLER:
-//        return PlaystationGameStatus.BEST_SELLER
-
-//     case PlaystationGameStatus.HOT:
-//        return PlaystationGameStatus.HOT
-       
-//     case PlaystationGameStatus.NEW:
-//        return PlaystationGameStatus.NEW
-       
-//     case  PlaystationGameStatus.ON_SALE:
-//        return PlaystationGameStatus.ON_SALE;
-       
-//     case  PlaystationGameStatus.PRE_ORDER:
-//        return  PlaystationGameStatus.PRE_ORDER
-
-//     case PlaystationGameStatus.TRENDING:
-//        return  PlaystationGameStatus.TRENDING
-
-  
-//     default:
-//       null;
-//   }
-
-// }
 
 export const fetchAllFavorites = async(userJWT:string) =>{
   let favoritesData = null
@@ -118,3 +91,124 @@ export const fetchAllFavorites = async(userJWT:string) =>{
 return [favoritesData,favoritesErrors]
 
 }
+
+
+export const deleteFavorite =  async(user:string | null,username:string  |null ,gameId:string,platform:string,setIsFavored:any) =>{
+  let payloadData = null
+  let  payloadError = null
+
+  const payload ={
+    dataPayload:{
+      username: username,
+      productId:gameId,
+      platform:platform
+    }
+ }
+
+   const request = {
+     method: 'POST',
+     headers: {
+       'Content-Type': 'application/json',
+    
+       Authorization: `Bearer ${user}`,
+     },
+     body: JSON.stringify(
+      {payload}
+    )
+   
+ 
+     }
+  
+   try {
+       const res = await  fetch("http://localhost:1340/api/delete-favorite",request);
+       const data = await res.json();
+       payloadData = data;
+       if(data){
+
+        setIsFavored(false)
+      }
+      //  console.log("DELETING DATA " ,data)
+   } catch (error) {
+    payloadError= error
+   }
+
+  return [payloadData,payloadError]
+ }
+
+
+
+ export const AddToFavorites =  async(user:string | null,username:string  |null ,gameId:string,platform:string,setIsFavored:any) =>{
+  let payloadData = null
+  let  payloadError = null
+
+ const payload ={
+    dataPayload:{
+      username: username,
+      productId:gameId.toString(),
+      platform:platform
+    }
+ }
+
+  const request = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+   
+      Authorization: `Bearer ${user}`,
+    },
+    body: JSON.stringify(
+      {payload}
+    )
+    }
+ 
+  try {
+      const res = await  fetch("http://localhost:1340/api/add-favorite",request);
+      const data = await res.json();
+      payloadData = data
+      setIsFavored(true)
+  } catch (error) {
+        payloadData = error
+  }
+  return [payloadData,payloadError]
+}
+
+export const isFavoredCheckFun  =async(user:string | null,username:string  |null ,gameId:string,platform:string,setIsFavored:any)=>{
+  // console.log("useEffect IS FAVORED?")
+  const payload ={
+    dataPayload:{
+      username: username,
+      productId:gameId,
+      platform:platform
+    }
+ }
+    const request = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+      
+          Authorization: `Bearer ${user}`,
+        },
+        body: JSON.stringify({payload})
+     
+      
+        }
+
+
+  try {
+    const res = await  fetch(`http://localhost:1340/api/find-favorite`,request);
+    const resData = await res.json();
+
+  
+
+    if ((resData.username)) {
+      // console.log(resData.username)
+      setIsFavored(true)
+    }
+  } catch (error) {
+    console.log(error)
+    setIsFavored(false)
+  }
+
+}
+
+

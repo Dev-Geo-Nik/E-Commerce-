@@ -21,7 +21,7 @@ const  DisplayPlaystationGames :React.FC = () => {
    
 
     
-  console.log("rendering!!!")
+//   console.log("rendering!!!")
     // Sort the displayed games.
     let sortedCurrentGames = currentGames.sort((a,b)=>(a.title >b.title ? 1 :-1))
   
@@ -67,7 +67,7 @@ const  DisplayPlaystationGames :React.FC = () => {
                     {/* @ts-ignore */}
                      <GatsbyImage image={gatsbyImageData} alt={title} className={styles.gameImage} objectFit="fill"/>
                      <div className={styles.imageTextContainer}   >
-                        <Favorite gameID={strapi_id} platform={platform}/>
+                        {/* <Favorite gameID={strapi_id} platform={platform}/> */}
                             
                         <Link to={`/playstation/game/${slug}`} className={styles.ctaButton}>See More </Link>
                         <div className={styles.ratingContainer}>

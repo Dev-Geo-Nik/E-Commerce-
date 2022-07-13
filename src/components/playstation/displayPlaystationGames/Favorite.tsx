@@ -10,8 +10,7 @@ interface Props {
 }
 
 const  Favorite :React.FC<Props> = ({gameID,platform}) => {
-  const {state:{allFavorites}} = useGameContext()
-  // const [favored ,setFavored] = useState(false)
+
 
   // console.log(hovered)
 
@@ -86,45 +85,3 @@ export default Favorite;
 
 
 
-
-// const gameId = e.currentTarget.getAttribute("data-game-id")
-// const platform = e.currentTarget.getAttribute("data-platform")
-// const user = localStorage.getItem("userJWT")
-// const payload ={
-//     data:{
-//         jwt:user,
-//         gameId: gameId,
-//         platform:platform
-//     }
-//   }
-// const request = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-   
-//       Authorization: `Bearer ${localStorage.getItem("userJWT")}`,
-//     },
-//     body: JSON.stringify(
-//         payload
-//     )
-//     }
-//     const test = async () =>{
-
-//       try {
-//         const res = await  fetch(`http://localhost:1340/api/find-favorite`,request);
-//         const resData = await res.json();
-//         console.log(resData.userJWT)
-//         if ((resData.userJWT)) {
-//           // setHover(true)
-//           setFavored(true)
-//         }
-//       } catch (error) {
-//         console.log(error)
-//         setFavored(false)
-//       }
-//     }
-
-//     if (localStorage.getItem("userJWT")) {
-      
-//       test();
-//     }

@@ -16,7 +16,7 @@ export interface GameContextState {
       gamesPS5:PlaystationSingleGameType | [],
       userJWT :string
       isLoading: boolean,
-      allFavorites:{}[]
+   
      
       
       
@@ -38,7 +38,7 @@ const initialState : GameContextState = {
     gamesPS5: [],
     userJWT:"",
     isLoading:false,
-    allFavorites:[]
+  
   
 
 }

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ActionTypes } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
-import { fetchAllFavorites, getRandomNumberBetween, loginUserSchema } from '../../../util/helpers';
+import {  getRandomNumberBetween, loginUserSchema } from '../../../util/helpers';
 import  * as styles from './loginForm.module.scss';
 
 
@@ -72,11 +72,10 @@ const  LoginForm :React.FC = () => {
 
           const res = await fetch("http://localhost:1340/api/auth/local",request)
           const userData = await res.json();
-        console.log(userData)
+     
 
           if (userData.user) {
-            // console.log(userData.jwt)
-            // console.log(userData.user)
+
             dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
             setErrorMessage("")
             // dispatch({type:ActionTypes.LOGIN_USER,payload:userData.jwt})
@@ -85,20 +84,13 @@ const  LoginForm :React.FC = () => {
             window.localStorage.setItem("userJWT",userData.jwt)
             window.localStorage.setItem("username",userData.user.username)
 
-            const allFavorites = await  fetchAllFavorites(userData.jwt)
-            
-
-            const [data] = allFavorites;
-
-            window.localStorage.setItem("favorites",JSON.stringify(data.data))
-            // dispatch({type:ActionTypes.FETCH_FAVORITES,payload:data.data})
             navigate("/app/playstation")
             
          }      
        
         if (userData.error) {
               dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
-              // let message = data.error.message.includes("Email") ? data.error.message :"Username is already taken"
+            
               setIsError(true)
               setErrorMessage("Invalid username or password ")
         

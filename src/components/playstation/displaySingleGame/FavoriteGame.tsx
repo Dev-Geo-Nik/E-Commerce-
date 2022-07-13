@@ -1,5 +1,7 @@
+import { navigate } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
+import { AddToFavorites, deleteFavorite, isFavoredCheckFun } from '../../../util/helpers';
 import  * as styles from './favoriteGame.module.scss';
 
 
@@ -13,68 +15,60 @@ interface Props {
 const  FavoriteGame :React.FC<Props> = ({gameId,platform}) => {
 
   const [isFavored , setIsFavored] = useState(false )
+  const isBrowser = typeof window !== "undefined"
+  let user:string | null  = ""
+  let username  :string | null = ""
 
-  const user = localStorage.getItem("userJWT")
+   if(isBrowser){
+     user = localStorage.getItem("userJWT")
+     username = localStorage.getItem("username");
+   
+  }
+
+
+
 
 
   useEffect(()=>{
     
-  console.log("userEffect???")
-
-    const isFavoredCheck  = async()=>{
-      console.log("checking???")
-        const payload ={
-            data:{
-                jwt:user,
-                gameId: gameId.toString(),
-                platform:platform
-            }
-          }
-        const request = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-          
-              Authorization: `Bearer ${localStorage.getItem("userJWT")}`,
-            },
-            body: JSON.stringify(
-                payload
-            )
-            }
-  
-
-      try {
-        const res = await  fetch(`http://localhost:1340/api/find-favorite`,request);
-        const resData = await res.json();
-
-      
-
-        if ((resData.userJWT)) {
-          console.log(resData.userJWT)
-          setIsFavored(true)
-        }
-      } catch (error) {
-        console.log(error)
-        setIsFavored(false)
-      }
-  
-    }
-
-    if(user){
-      isFavoredCheck();
+    if (username) {
+      const result = isFavoredCheckFun(user,username,gameId.toString(),platform ,setIsFavored)
     }
 
   },[isFavored])
 
-// console.log(isFavored)
+
+
+
+  const handlerClick = () =>{
+    
+    // if no user return login
+    if (user === null) {
+        navigate("/app/login")
+        return <></>
+    }
+
+    
+    if (isFavored) {
+      // Deleting the favorite
+        //  inside in result we have the data and errors if we want to make error handling
+      const result =  deleteFavorite(user,username,gameId.toString(),platform ,setIsFavored);
+      
+    }
+
+    // Add the favorite
+    const resultAddToFavorites =   AddToFavorites(user,username,gameId.toString(),platform ,setIsFavored)
+
+  }
+  
   return (
 <>
-<div className={styles.circle}>
-        <div className={styles.backgroundCircle}>
+<div className={styles.circle} onClick={handlerClick}>
+        <div className={isFavored? [styles.backgroundCircle, styles.backgroundFavored].join(" ") : styles.backgroundCircle}>
           <IoIosHeartEmpty className = {styles.heartIcon}/>
         </div>
         <div className={styles.textModalContainer}>        
-            <p className={styles.textModal}>Add to Wishlist</p>
+            <p className={styles.textModal}>{isFavored ? "Remove from wishlist" : "Add to Wishlist"}</p>
             <div className={styles.modalBackground}></div>
         </div>
     </div>
