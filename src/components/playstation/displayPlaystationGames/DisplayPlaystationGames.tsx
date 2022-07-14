@@ -15,7 +15,7 @@ import SaleStatus from './SaleStatus';
 
 const  DisplayPlaystationGames :React.FC = () => {
 
-    const {state:{gamesPS4,gamesPS5,currentPlaystationPlatform,currentPlaystationPublisher,currentPlaystationGenre,allFavorites}} = useGameContext();
+    const {state:{gamesPS4,gamesPS5,currentPlaystationPlatform,currentPlaystationPublisher,currentPlaystationGenre}} = useGameContext();
     let currentGames = currentPlaystationPlatform === "playstation 4" ? gamesPS4 : gamesPS5;
  
    

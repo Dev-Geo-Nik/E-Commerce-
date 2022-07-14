@@ -16,6 +16,11 @@ export interface GameContextState {
       gamesPS5:PlaystationSingleGameType | [],
       userJWT :string
       isLoading: boolean,
+      gameSourceCart : {
+         products:any
+      }
+      totalAmount:number
+      
    
      
       
@@ -38,8 +43,10 @@ const initialState : GameContextState = {
     gamesPS5: [],
     userJWT:"",
     isLoading:false,
-  
-  
+    gameSourceCart : {
+        products:[],
+    },
+    totalAmount:0
 
 }
 

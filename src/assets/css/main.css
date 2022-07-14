@@ -162,7 +162,7 @@ img{
   text-transform: uppercase;
   background-color: transparent;
   color:var(--clr-text-1);
-  padding: 0.8rem 2rem;
+  padding: 0.4rem 1.5rem;
   transition: var(--transition);
   display: inline-block;
   cursor: pointer;
@@ -171,11 +171,12 @@ img{
   font-size: 1.8rem;
   font-family: var(--ff-primary-3);
   font-weight: bold;
+  
 }
 
 .btn-ghost:hover {
 
-  background: var(--clr-primary-1-hover);
+  background: var(--clr-primary-4);
 }
 
 

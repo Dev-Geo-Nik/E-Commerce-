@@ -79,11 +79,14 @@ const  LoginForm :React.FC = () => {
             dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
             setErrorMessage("")
             // dispatch({type:ActionTypes.LOGIN_USER,payload:userData.jwt})
+            const cart:any = [];
 
-         
+            localStorage.setItem("cart",JSON.stringify(cart))
+            localStorage.setItem("cartTotalAmount","0")
             window.localStorage.setItem("userJWT",userData.jwt)
             window.localStorage.setItem("username",userData.user.username)
 
+            // dispatch({type:ActionTypes.INITIALIZE_CART ,payload:  localStorage.getItem("cart")})
             navigate("/app/playstation")
             
          }      

@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
 import  * as styles from './deliveryStockContainer.module.scss';
@@ -7,9 +8,13 @@ import Stock from './Stock';
 interface Props {
     gameId:number
     platform:string
+    imageUrl:string
+    productName: string
+    productPrice:number
+    productDiscountPrice:string
 }
 
-const  DeliveryStockContainer :React.FC<Props> = ({gameId,platform}) => {
+const  DeliveryStockContainer :React.FC<Props> = ({gameId,platform,imageUrl,productDiscountPrice,productName,productPrice}) => {
 
     const [stock , setStock] = useState(1)
 
@@ -33,7 +38,8 @@ const  DeliveryStockContainer :React.FC<Props> = ({gameId,platform}) => {
 <>
   <Stock stock = {stock}/>
   <div className={styles.deliveryTime}>Delivery time : {stock > 0 ? <span className={styles.deliverySpanText}>6-12 business days</span> : "unknown"}</div>
-  <Button stock={stock} gameId={gameId}/>
+  <Button stock={stock} gameId={gameId} platform={platform} imageUrl={imageUrl} productDiscountPrice = {productDiscountPrice} productName={productName}  productPrice = {productPrice}/>
+   <Link to="/app/playstation" className={[styles.ghostBtm ,"btn-ghost "].join(" ")}>Back</Link>
   <FavoriteGame gameId={gameId} platform={platform}/>
 </>
 );

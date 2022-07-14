@@ -64,7 +64,26 @@ switch (action.type) {
           userJWT:action.payload
         }
       );
+      // !CART
+
+
+    // case  ActionTypes.INITIALIZE_CART:
+    //     return ({
+    //       ...state,
+    //       cart:action.payload
+    //     }
+    //   );
   
+    case  ActionTypes.ADD_PRODUCT_TO_CART:
+        return ({
+          ...state,
+          // gameSourceCart: [ ...state.gameSourceCart.products,action.payload.product],
+          // totalAmount: action.payload.totalAmount
+          
+        }
+      );
+  
+
 
 
     default:

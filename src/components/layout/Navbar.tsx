@@ -4,6 +4,7 @@ import Logo from "../../assets/images/logo.svg"
 import { Link } from 'gatsby';
 import {  FaPlaystation, FaShoppingCart, FaUserCog, FaUserPlus, FaUserTag, FaXbox } from "react-icons/fa";
 import { useGameContext } from '../../context/game/GameContext';
+import { displayCart } from '../../util/CartHelpers';
 
 const active = {
      background: "#5e5b5b",
@@ -15,15 +16,17 @@ const active = {
 // <div className={`${styles.text} ${styles.class}`}></div>
 
 const  Navbar :React.FC = () => {
-   
+     const { state:{gameSourceCart}} = useGameContext()
      
      const isBrowser = typeof window !== "undefined"
      let userJWT;
      let username;
      
+     
      if (isBrowser) {
      userJWT = localStorage.getItem("userJWT")
      username = localStorage.getItem("username")
+     
      }  
 
  
@@ -71,7 +74,7 @@ const  Navbar :React.FC = () => {
                <li className={styles.linkCart}>
                     <Link to="/app/cart"  >                 
                          <FaShoppingCart className={styles.iconCart}/>  
-                         <span className={styles.cartText}>0</span>
+                         <span className={styles.cartText}>{displayCart() ? displayCart().length : "0"}</span>
                     </Link>
                </li>
           </div>

@@ -15,7 +15,7 @@ interface Props {
 
 const  TitleContainer :React.FC<Props> = ({gameData}) => {
     const {strapiPlaystationGame:{title,description,genre,id,image,language,pegi,platform,price,publisher,stock,strapi_id,videoUrl,discountPrice,status,edition}} = gameData;
-
+    const imageUrl = image.localFile.url
   return (
 <div  className={styles.titleContainerSingle}>
   <div className={styles.priceContainer}>
@@ -27,7 +27,7 @@ const  TitleContainer :React.FC<Props> = ({gameData}) => {
   <p className={styles.paraFlex}> <span className={styles.label}>Genre </span>  <span className = {styles.labelText}>{genre}</span></p>
   <p className={styles.paraFlex}> <span className={styles.label}>PEGI </span>  <span className = {styles.labelText}>{pegi}</span></p>
   <p className={styles.paraFlex}> <span className={styles.label}>Region </span>  <span className = {styles.labelText}>English</span></p>
-   <DeliveryStockContainer gameId={strapi_id} platform={platform}/>
+   <DeliveryStockContainer gameId={strapi_id} platform={platform}  imageUrl={imageUrl} productName={title} productPrice = {price} productDiscountPrice={discountPrice}/>
 
   
 </div>
