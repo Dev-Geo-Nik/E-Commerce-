@@ -1,8 +1,10 @@
+
+
+
 .playstationSingleGameContainer{
+  
     grid-column:  4/ 12;
-    // background-color:var(--clr-primary-3);
     background-color:var(--clr-background-2);
-   
     border-radius: 5px;
     height: 100%;
     
@@ -11,22 +13,19 @@
 
 .marginContainer{
     margin:4rem;
+  
 }
 
 
 .imageTitleContainer{
     display: flex;
-    // justify-content: sp
-    // background-color:rgba(187, 59, 59, 0.363);
+
 
 }
 
 
 
 .titleContainer{
-  
-    // color:#fff;
-    // color:var(--clr-primary-3);
     margin-left: 4rem;
     padding:2rem;
     flex:2;

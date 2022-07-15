@@ -19,10 +19,7 @@ const  Cart :React.FC<Props> = () => {
       return<></>
   }
   const cart = displayCart();
-  
-  console.log(gameSourceCart.map((prod:any)=>{
-      // console.log(prod)
-  }))
+  console.log(cart)
 
 
   return (

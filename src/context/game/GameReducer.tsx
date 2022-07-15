@@ -64,6 +64,14 @@ switch (action.type) {
           userJWT:action.payload
         }
       );
+
+    case  ActionTypes.DISPLAY_POPUP_WINDOW:
+        return ({
+          ...state,
+          displayPopupWindow:action.payload
+        }
+      );
+
       // !CART
 
 
@@ -75,10 +83,11 @@ switch (action.type) {
     //   );
   
     case  ActionTypes.ADD_PRODUCT_TO_CART:
+      console.log(action.payload.product)
         return ({
           ...state,
-          // gameSourceCart: [ ...state.gameSourceCart.products,action.payload.product],
-          // totalAmount: action.payload.totalAmount
+          gameSourceCart: [ action.payload.product] ,
+          totalAmount: action.payload.totalAmount
           
         }
       );

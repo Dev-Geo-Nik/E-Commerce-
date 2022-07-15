@@ -6,6 +6,8 @@ import  * as styles from './displaySinglePlaystationGame.module.scss';
 import ReactPlayer from 'react-player'
 import Favorite from '../displayPlaystationGames/Favorite';
 import TitleContainer from './TitleContainer';
+import AccountPopup from '../../accountPopup/AccountPopup';
+import { useGameContext } from '../../../context/game/GameContext';
 
  interface Props{
    gameData :SinglePlaystationGameType
@@ -16,13 +18,17 @@ import TitleContainer from './TitleContainer';
 
 const  DisplaySinglePlaystationGame :React.FC<Props> = ({gameData}) => {
      const {strapiPlaystationGame:{title,genre,id,image,language,pegi,platform,price,publisher,stock,strapi_id,videoUrl,discountPrice,status,edition,description,slug}} = gameData;
-  
+     const {state:{displayPopupWindow}} = useGameContext()
 
 
   return (
+
+
+
 <div className={styles.playstationSingleGameContainer}>
+  {displayPopupWindow && <AccountPopup/> }
     <div className={styles.marginContainer}>
-          
+        
         <div className={styles.imageTitleContainer}>
           <div className={styles.imageContainer}>
             <SaleStatus status={status}/>
@@ -44,6 +50,8 @@ const  DisplaySinglePlaystationGame :React.FC<Props> = ({gameData}) => {
       </div>
     </div>
 </div> 
+
+
 );
 };
 

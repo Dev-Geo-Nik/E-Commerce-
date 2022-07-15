@@ -1,8 +1,10 @@
 import { graphql  } from 'gatsby';
 import React from 'react';
+import AccountPopup from '../../../components/accountPopup/AccountPopup';
 import Navbar from '../../../components/layout/Navbar';
 import SEO from '../../../components/layout/Seo';
 import DisplaySinglePlaystationGame from '../../../components/playstation/displaySingleGame/DisplaySinglePlaystationGame';
+import { useGameContext } from '../../../context/game/GameContext';
 import  * as styles from './singlePlaystationGamePage.module.scss';
 
 export type SinglePlaystationGameType = {
@@ -69,13 +71,14 @@ interface Props{
 
 const SinglePlaystationGamePage :React.FC<Props> = ({pageContext,data}) => {
     const{title,slug} = data.strapiPlaystationGame;  
-
+    
   // console.log(slug)
   return (
 <div className={styles.singleGameContainer}> 
       <SEO title={title} />
      <Navbar/>
      <DisplaySinglePlaystationGame gameData = {data}/>
+
    
 </div>
 );
