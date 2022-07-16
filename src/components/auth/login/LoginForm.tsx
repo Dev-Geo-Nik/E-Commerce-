@@ -85,7 +85,7 @@ const  LoginForm :React.FC = () => {
             localStorage.setItem("cartTotalAmount","0")
             window.localStorage.setItem("userJWT",userData.jwt)
             window.localStorage.setItem("username",userData.user.username)
-
+            
             // dispatch({type:ActionTypes.INITIALIZE_CART ,payload:  localStorage.getItem("cart")})
             navigate("/app/playstation")
             

@@ -1,0 +1,44 @@
+
+.header{
+    // width: 100%;
+    color:#fff;
+    height: 8rem;
+    font-size: 1.8rem;
+    background-color:#008AA4;
+    text-transform: uppercase;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    position:sticky;
+    top: 0;
+}
+
+.countGroup{
+    display:flex;
+     margin-left: 2rem;
+}
+
+.cartSummary{
+   margin-right: 2rem;
+}
+
+.productsCount{
+    // margin-right: 4rem;
+    color:var(--clr-primary-4);
+  
+}
+
+.countGroup{
+// 
+}
+
+.summaryGroup{
+    display: flex;
+    align-items: center;
+}
+
+.totalAmount{
+    color: var(--clr-primary-4);
+    margin: 0 2rem 0 1rem;
+}

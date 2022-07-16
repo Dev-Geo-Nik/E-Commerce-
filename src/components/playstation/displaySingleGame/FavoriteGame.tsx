@@ -1,7 +1,10 @@
 import { navigate } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
+import { ActionTypes } from '../../../context/Constants';
+import { useGameContext } from '../../../context/game/GameContext';
 import { AddToFavorites, deleteFavorite, isFavoredCheckFun } from '../../../util/helpers';
+import AccountPopup from '../../accountPopup/AccountPopup';
 import  * as styles from './favoriteGame.module.scss';
 
 
@@ -13,7 +16,7 @@ interface Props {
 
 
 const  FavoriteGame :React.FC<Props> = ({gameId,platform}) => {
-
+  const {state:{displayPopupWindow},dispatch} = useGameContext();
   const [isFavored , setIsFavored] = useState(false )
   const isBrowser = typeof window !== "undefined"
   let user:string | null  = ""
@@ -44,7 +47,9 @@ const  FavoriteGame :React.FC<Props> = ({gameId,platform}) => {
     
     // if no user return login
     if (user === null) {
-        navigate("/app/login")
+      dispatch({type:ActionTypes.DISPLAY_POPUP_WINDOW, payload: true})
+        // navigate("/app/login")
+
         return <></>
     }
 
@@ -63,7 +68,8 @@ const  FavoriteGame :React.FC<Props> = ({gameId,platform}) => {
   
   return (
 <>
-<div className={styles.circle} onClick={handlerClick}>
+{/* {displayPopupWindow && <AccountPopup/>} */}
+<div className={styles.circle} onClick={handlerClick} >
         <div className={isFavored? [styles.backgroundCircle, styles.backgroundFavored].join(" ") : styles.backgroundCircle}>
           <IoIosHeartEmpty className = {styles.heartIcon}/>
         </div>

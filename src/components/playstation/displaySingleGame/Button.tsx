@@ -16,21 +16,24 @@ interface Props{
   productName: string
   productPrice:number
   productDiscountPrice:string
+  edition:string
 }
 
 
 
-const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscountPrice,productName,productPrice}) => {
+const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscountPrice,productName,productPrice,edition}) => {
   const {dispatch} = useGameContext();
  
 
-  // const isBrowser = typeof window !== "undefined"
+  const  isBrowser = typeof window !== "undefined"
   
   // console.log(displayCart())
- 
-
-    const user = localStorage.getItem('user');
-    console.log(user)
+  let user :string | null= ""
+  if (isBrowser) {
+    
+     user = localStorage.getItem('userJWT');
+  }
+    // console.log(user)
 
   const addToCartHandler  = ()=>{
     
@@ -39,9 +42,9 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
        return  
     }
 
-    console.log("Add to cart")
+    // console.log("Add to cart")
 
-    addToCart({productId:gameId.toString(),platform:platform ,amount:1,productName:productName ,imageUrl:imageUrl,productDiscountPrice:productDiscountPrice,productPrice,uniqid:uniqid()})
+    addToCart({productId:gameId.toString(),platform:platform ,amount:1,productName:productName ,imageUrl:imageUrl,productDiscountPrice:productDiscountPrice,productPrice,uniqid:uniqid(),edition:edition})
     
     dispatch({type:ActionTypes.ADD_PRODUCT_TO_CART , payload:{product:displayCart(),totalAmount:displayTotalCartAmount()}})
     

@@ -3,8 +3,7 @@ import React from 'react';
 import { SinglePlaystationGameType } from '../../../pages/playstation/game/{StrapiPlaystationGame.slug}';
 import SaleStatus from '../displayPlaystationGames/SaleStatus';
 import  * as styles from './displaySinglePlaystationGame.module.scss';
-import ReactPlayer from 'react-player'
-import Favorite from '../displayPlaystationGames/Favorite';
+import ReactPlayer from 'react-player';
 import TitleContainer from './TitleContainer';
 import AccountPopup from '../../accountPopup/AccountPopup';
 import { useGameContext } from '../../../context/game/GameContext';

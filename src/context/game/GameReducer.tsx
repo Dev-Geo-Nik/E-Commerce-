@@ -83,7 +83,16 @@ switch (action.type) {
     //   );
   
     case  ActionTypes.ADD_PRODUCT_TO_CART:
-      console.log(action.payload.product)
+      // console.log(action.payload.product)
+        return ({
+          ...state,
+          gameSourceCart: [ action.payload.product] ,
+          totalAmount: action.payload.totalAmount
+          
+        }
+      );
+    case  ActionTypes.REMOVE_ITEM_FROM_CART:
+      // console.log(action.payload.product)
         return ({
           ...state,
           gameSourceCart: [ action.payload.product] ,

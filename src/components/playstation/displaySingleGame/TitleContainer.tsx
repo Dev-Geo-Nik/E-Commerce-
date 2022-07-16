@@ -27,7 +27,7 @@ const  TitleContainer :React.FC<Props> = ({gameData}) => {
   <p className={styles.paraFlex}> <span className={styles.label}>Genre </span>  <span className = {styles.labelText}>{genre}</span></p>
   <p className={styles.paraFlex}> <span className={styles.label}>PEGI </span>  <span className = {styles.labelText}>{pegi}</span></p>
   <p className={styles.paraFlex}> <span className={styles.label}>Region </span>  <span className = {styles.labelText}>English</span></p>
-   <DeliveryStockContainer gameId={strapi_id} platform={platform}  imageUrl={imageUrl} productName={title} productPrice = {price} productDiscountPrice={discountPrice}/>
+   <DeliveryStockContainer gameId={strapi_id} platform={platform}  imageUrl={imageUrl} productName={title} productPrice = {price} productDiscountPrice={discountPrice} edition={edition}/>
 
   
 </div>
