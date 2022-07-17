@@ -5,6 +5,7 @@ import { addToCart, displayCart, displayTotalCartAmount } from '../../../util/Ca
 import uniqid from 'uniqid';
 
 import  * as styles from './button.module.scss';
+import { FaBox, FaShoppingCart } from 'react-icons/fa';
 
 
 
@@ -38,7 +39,8 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
   const addToCartHandler  = ()=>{
     
     if (user === null) {
-      dispatch({type:ActionTypes.DISPLAY_POPUP_WINDOW , payload: true})
+      
+       dispatch({type:ActionTypes.DISPLAY_POPUP_WINDOW , payload: true})
        return  
     }
 
@@ -50,14 +52,21 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
     
   }
 
+  // let displayButton = <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>
+  //                         <span className={styles.addToCart}>Add to cart</span>
+  //                         <span className={styles.added}>Added</span>
+  //                         <FaShoppingCart className = {styles.shoppingCartIcon}/>
+  //                         <FaBox className={styles.boxIcon}/>
+  //                    </button> 
+
+
+  
+
+  // <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>Add to cart</button> 
 
   return (
 <>
-
-{stock > 0 ? <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>Add to cart</button> :  <button className={`btn-cta ${styles.disable}` }>Add to cart</button>} 
-
-
-
+  {stock > 0 ? <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>Add to cart</button>  :  <button className={`btn-cta ${styles.disable}` }>Add to cart</button>} 
 </>
    
 

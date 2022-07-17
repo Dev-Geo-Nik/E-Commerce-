@@ -2,12 +2,16 @@
     color:#fff;
     background-color:var(--clr-primary-5);
     margin: 2rem  0  0 0;
+    position: relative;
+    overflow: hidden;
     
     &:hover{
         background-color:#94D021;
 
     }
 
+
+ 
 }
 
 .disable{
@@ -15,3 +19,42 @@
     margin: 2rem  0  0 0;
     pointer-events: none;
 }
+
+.shoppingCartIcon {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: -10%;
+    font-size: 2em;
+    transform: translate(-50%, -50%);
+    color:red;
+}
+
+.boxIcon{
+    position: absolute;
+    z-index: 3;
+    top:-20%;
+    left:50%;
+    font-size: 1.2em;
+    transform: translate(-50%,-50%);
+}
+
+.btnSingle span{
+    position: absolute;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+	font-size: 1.2em;
+	color: red;
+	transform: translate(-50%,-50%);
+}
+
+.addToCart{
+    
+    opacity: 1;
+}
+
+.added{
+    // opacity: 0;
+}
+
