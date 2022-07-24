@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,Ref, useRef } from 'react';
 import { ActionTypes } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
 import { addToCart, displayCart, displayTotalCartAmount } from '../../../util/CartHelpers';
@@ -24,8 +24,8 @@ interface Props{
 
 const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscountPrice,productName,productPrice,edition}) => {
   const {dispatch} = useGameContext();
- 
-
+  const refEle = useRef<null | HTMLButtonElement>(null)
+  
   const  isBrowser = typeof window !== "undefined"
   
   // console.log(displayCart())
@@ -38,12 +38,17 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
 
   const addToCartHandler  = ()=>{
     
+
     if (user === null) {
       
        dispatch({type:ActionTypes.DISPLAY_POPUP_WINDOW , payload: true})
        return  
     }
-
+    if (refEle) {
+      console.log(refEle.current?.classList)
+      refEle.current?.classList.add("runAnimation")
+      
+    }
     // console.log("Add to cart")
 
     addToCart({productId:gameId.toString(),platform:platform ,amount:1,productName:productName ,imageUrl:imageUrl,productDiscountPrice:productDiscountPrice,productPrice,uniqid:uniqid(),edition:edition})
@@ -52,12 +57,13 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
     
   }
 
-  // let displayButton = <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>
-  //                         <span className={styles.addToCart}>Add to cart</span>
-  //                         <span className={styles.added}>Added</span>
-  //                         <FaShoppingCart className = {styles.shoppingCartIcon}/>
-  //                         <FaBox className={styles.boxIcon}/>
-  //                    </button> 
+  let displayButton = <button className={`btn-cta  ${styles.btnSingle}` } onClick={addToCartHandler} ref={refEle}>
+                     
+                          <FaShoppingCart className = {styles.shoppingCartIcon}/>
+                          <FaBox className={styles.boxIcon}/>
+                        
+                          Add to cart
+                     </button> 
 
 
   
@@ -66,7 +72,8 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
 
   return (
 <>
-  {stock > 0 ? <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>Add to cart</button>  :  <button className={`btn-cta ${styles.disable}` }>Add to cart</button>} 
+    
+  {stock > 0 ?  displayButton:  <button className={`btn-cta ${styles.disable}` }>Add to cart</button>} 
 </>
    
 

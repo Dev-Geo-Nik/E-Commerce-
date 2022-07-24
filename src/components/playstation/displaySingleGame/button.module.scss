@@ -4,9 +4,13 @@
     margin: 2rem  0  0 0;
     position: relative;
     overflow: hidden;
-    
+     transition: all 0.5s;
+     padding:1rem 1.2rem;
+    position: relative;
+
+
     &:hover{
-        background-color:#94D021;
+        // background-color:#94D021;
 
     }
 
@@ -14,40 +18,83 @@
  
 }
 
+
 .disable{
     background-color: #8b8b8b;
     margin: 2rem  0  0 0;
+    padding:1rem 1.2rem;
     pointer-events: none;
 }
 
 .shoppingCartIcon {
     position: absolute;
     z-index: 2;
-    top: 50%;
-    left: -10%;
-    font-size: 2em;
-    transform: translate(-50%, -50%);
-    color:red;
+    bottom: 10%;
+    left: -80%;
+    font-size: 1.7em;
+    color:#fff;
+    
+  
 }
 
 .boxIcon{
     position: absolute;
-    z-index: 3;
-    top:-20%;
-    left:50%;
-    font-size: 1.2em;
-    transform: translate(-50%,-50%);
+    z-index: 1;
+    top:-80%;
+    left:40%;
+    font-size: 1em;
+    // transform: translate(-50%,-50%);
+    color:fff;
+    
 }
 
-.btnSingle span{
+.btnSingle:before{
+    content: "";
     position: absolute;
-	z-index: 3;
-	left: 50%;
-	top: 50%;
-	font-size: 1.2em;
-	color: red;
-	transform: translate(-50%,-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:var(--clr-primary-5);
+    z-index: 1;
+    opacity: 0;
 }
+.btnSingle:hover:before{
+   
+    opacity: 1;
+}
+
+.btnSingle:hover{
+   
+ 
+
+    .shoppingCartIcon{
+        animation: cartAnimate 1.5s linear  forwards; 
+        // animation-iteration-count: 1;
+    }
+    .boxIcon{
+        animation: boxAnimate 1.5s linear forwards;
+        // animation-iteration-count: 1;
+    }
+}
+
+.btnSingle:active{
+    animation: shake 2.5s  both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+  
+}
+
+
+// .btnSingle span{
+//     position: absolute;
+// 	z-index: 3;
+// 	left: 50%;
+// 	top: 50%;
+// 	font-size: 1.2em;
+// 	color: red;
+// 	transform: translate(-50%,-50%);
+// }
 
 .addToCart{
     
@@ -58,3 +105,55 @@
     // opacity: 0;
 }
 
+
+@keyframes cartAnimate {
+    0%{
+        
+            left: -80%;
+      
+    }
+
+    50%{
+      
+            left: 30%;
+       
+    }
+    100%{
+     
+            left: 35%;
+       
+    }
+}
+@keyframes boxAnimate {
+    0%{
+        
+            top: -80%;
+      
+    }
+
+    50%{
+      
+            top: 10%;
+       
+    }
+    100%{
+     
+            top: 20%;
+            color:transparent;
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-5px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }

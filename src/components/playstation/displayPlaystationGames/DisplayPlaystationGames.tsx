@@ -68,8 +68,10 @@ const  DisplayPlaystationGames :React.FC = () => {
                      <GatsbyImage image={gatsbyImageData} alt={title} className={styles.gameImage} objectFit="fill"/>
                      <div className={styles.imageTextContainer}   >
                         {/* <Favorite gameID={strapi_id} platform={platform}/> */}
-                            
-                        <Link to={`/playstation/game/${slug}`} className={styles.ctaButton}>See More </Link>
+                        <div className={styles.btnContainer}>
+                             <Link to={`/playstation/game/${slug}`} className={styles.ctaButton}>See More </Link>
+                        </div>
+                      
                         <div className={styles.ratingContainer}>
                             <p >ESRB: <span className={styles.pegiText}>{pegi}</span></p>
                         </div>

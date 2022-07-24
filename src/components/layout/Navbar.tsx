@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import  * as styles from './navbar.module.scss';
 import Logo from "../../assets/images/logo.svg"
 import { Link } from 'gatsby';
@@ -29,7 +29,9 @@ const  Navbar :React.FC = () => {
      
      }  
 
- 
+     useEffect(()=>{
+          console.log("cart length updated")
+     },[displayCart().length])
 
   
   return (
