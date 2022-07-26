@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../components/home/home';
+import HomePage from "../components/home/Home";
 
 
 
@@ -9,7 +9,7 @@ const  index :React.FC = () => {
   
   return (
 <>
-   <Home/> 
+   <HomePage/> 
 </>
 );
 };

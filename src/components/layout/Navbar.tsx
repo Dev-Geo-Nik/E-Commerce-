@@ -29,9 +29,7 @@ const  Navbar :React.FC = () => {
      
      }  
 
-     useEffect(()=>{
-          console.log("cart length updated")
-     },[displayCart().length])
+
 
   
   return (

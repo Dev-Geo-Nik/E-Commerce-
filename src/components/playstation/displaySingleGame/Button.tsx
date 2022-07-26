@@ -3,9 +3,12 @@ import { ActionTypes } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
 import { addToCart, displayCart, displayTotalCartAmount } from '../../../util/CartHelpers';
 import uniqid from 'uniqid';
+import { useSpring, animated } from 'react-spring'
+
 
 import  * as styles from './button.module.scss';
 import { FaBox, FaShoppingCart } from 'react-icons/fa';
+
 
 
 
@@ -24,8 +27,34 @@ interface Props{
 
 const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscountPrice,productName,productPrice,edition}) => {
   const {dispatch} = useGameContext();
-  const refEle = useRef<null | HTMLButtonElement>(null)
+  const [clicked ,setClicked] = useState(false);
   
+  const buttonAnimation = useSpring({  to:{  color:clicked ? "transparent" : "#fff"}})
+  
+  const cartAnimation = useSpring({
+    from: { x:10 },   
+    to: { opacity: clicked ? 1 : 0,   x:156   },
+    reset:clicked,
+    config: {  tension:100,   friction:60   },
+    // delay:1000,
+  })    
+   
+ 
+
+  const boxAnimation = useSpring({
+    from: { y:-50 },
+    to: {  y:37,  opacity: clicked ? 1 : 0,    },
+    reset:clicked,
+    config: {  tension:110, friction:60   },})
+  
+    
+    const buttonActiveStyles = useSpring({
+      from:{opacity:0},
+      to: {   opacity:clicked ? 1 :0 }
+    
+    })
+ 
+
   const  isBrowser = typeof window !== "undefined"
   
   // console.log(displayCart())
@@ -44,31 +73,51 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
        dispatch({type:ActionTypes.DISPLAY_POPUP_WINDOW , payload: true})
        return  
     }
-    if (refEle) {
-      console.log(refEle.current?.classList)
-      refEle.current?.classList.add("runAnimation")
-      
-    }
+  
     // console.log("Add to cart")
-
     addToCart({productId:gameId.toString(),platform:platform ,amount:1,productName:productName ,imageUrl:imageUrl,productDiscountPrice:productDiscountPrice,productPrice,uniqid:uniqid(),edition:edition})
     
     dispatch({type:ActionTypes.ADD_PRODUCT_TO_CART , payload:{product:displayCart(),totalAmount:displayTotalCartAmount()}})
     
+    setClicked(true)
+    setTimeout(() => {
+      setClicked(false)
+    }, 1600);
   }
 
-  let displayButton = <button className={`btn-cta  ${styles.btnSingle}` } onClick={addToCartHandler} ref={refEle}>
-                     
-                          <FaShoppingCart className = {styles.shoppingCartIcon}/>
-                          <FaBox className={styles.boxIcon}/>
+  console.log(clicked)
+
+
+                    
+
+
+
+  let displayButton = <animated.button className={`btn-cta   ${styles.btnSingle}` } onClick={addToCartHandler}  style={{
+    
+                                 ...buttonAnimation
+                             }}>
+                            
+                             <animated.span className={styles.buttonActive} style={{...buttonActiveStyles}}></animated.span>
+                            <animated.div className={styles.cartContainer} style={{
+                              ...cartAnimation
+                            }}>
+                                <FaShoppingCart className = { styles.shoppingCartIcon}/>
+                            </animated.div>
+
+                            <animated.div className={styles.boxContainer} style = {{
+                                ...boxAnimation
+                            }}>
+
+                                <FaBox className={styles.boxIcon}/>
+                            </animated.div>
                         
                           Add to cart
-                     </button> 
+                     </animated.button> 
 
 
   
 
-  // <button className={`btn-cta ${styles.btnSingle}` } onClick={addToCartHandler}>Add to cart</button> 
+
 
   return (
 <>
