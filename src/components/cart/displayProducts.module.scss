@@ -106,6 +106,7 @@
         .deleteIcon{
             color:var(--clr-error-1);
             cursor: pointer;
+           
         }
         .textModalContainer{
             display: block;
@@ -116,8 +117,25 @@
     
 }
 
+// .deleteGroup{
+//     .deleteIcon:active{
+//         animation: shake 2.5s  both  ;
+//         transform: translate3d(0, 0, 0);
+//         perspective: 1000px;
+//     }
+// }
+
+.productContainer:active{
+        animation: shake 2.5s  both  ;
+        transform: translate3d(0, 0, 0);
+        perspective: 1000px;
+       background-color:rgb(221, 116, 116);
+}
+
+
+
 .deleteIcon{
-  
+     
     font-size: 3rem;
     transition: var(--transition)
 }

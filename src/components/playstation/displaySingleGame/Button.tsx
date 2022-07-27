@@ -82,6 +82,7 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
     setClicked(true)
     setTimeout(() => {
       setClicked(false)
+      dispatch({type:ActionTypes.CART_ANIMATE , payload:false})
     }, 1600);
   }
 

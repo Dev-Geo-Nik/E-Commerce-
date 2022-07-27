@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import {  FaPlaystation, FaShoppingCart, FaUserCog, FaUserPlus, FaUserTag, FaXbox } from "react-icons/fa";
 import { useGameContext } from '../../context/game/GameContext';
 import { displayCart } from '../../util/CartHelpers';
+import { useSpring,animated } from 'react-spring';
 
 const active = {
      background: "#5e5b5b",
@@ -16,8 +17,9 @@ const active = {
 // <div className={`${styles.text} ${styles.class}`}></div>
 
 const  Navbar :React.FC = () => {
-     const { state:{gameSourceCart}} = useGameContext()
+     const { state:{gameSourceCart,cartAnimation}} = useGameContext()
      
+
      const isBrowser = typeof window !== "undefined"
      let userJWT;
      let username;
@@ -26,11 +28,24 @@ const  Navbar :React.FC = () => {
      if (isBrowser) {
      userJWT = localStorage.getItem("userJWT")
      username = localStorage.getItem("username")
-     
+  
      }  
 
 
-
+     const cartAnimate = useSpring({
+        from:{
+          scale: 1,
+     
+        },
+        to:{
+          scale: cartAnimation? 1.4 : 1,
+          rotateY: cartAnimation ?-360 : 0
+         
+        },
+       
+     })
+     
+    
   
   return (
 <nav className={styles.nav}>
@@ -71,12 +86,12 @@ const  Navbar :React.FC = () => {
                        {userJWT ?  username : "My Account"}
                      </Link>
                </li>
-               <li className={styles.linkCart}>
+               <animated.li className={styles.linkCart} style={{...cartAnimate}}>
                     <Link to="/app/cart"  >                 
                          <FaShoppingCart className={styles.iconCart}/>  
-                         <span className={styles.cartText}>{displayCart() ? displayCart().length : "0"}</span>
+                         <span  className={styles.cartText}>{displayCart() ? displayCart().length : "0"}</span>
                     </Link>
-               </li>
+               </animated.li>
           </div>
       
 

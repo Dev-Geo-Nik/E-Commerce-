@@ -19,6 +19,7 @@ export interface GameContextState {
       gameSourceCart : {}[]
       totalAmount:number
       displayPopupWindow :boolean
+      cartAnimation :boolean
       
    
      
@@ -44,7 +45,8 @@ const initialState : GameContextState = {
     isLoading:false,
     gameSourceCart : [],
     totalAmount:0,
-    displayPopupWindow:false
+    displayPopupWindow:false,
+    cartAnimation:false
 }
 
 

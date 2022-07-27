@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoTrashOutline,  } from 'react-icons/io5';
 import { ActionTypes } from '../../context/Constants';
 import { useGameContext } from '../../context/game/GameContext';
 import { displayCart, displayTotalCartAmount, removeProductFromCart } from '../../util/CartHelpers';
 import  * as styles from './displayProducts.module.scss';
 import ProductsHeader from './ProductsHeader';
+import {useSpring, animated as a} from "react-spring";
 
 
 interface ProductProps {
@@ -25,12 +26,23 @@ interface ProductProps {
 
 
 const  DisplayProducts :React.FC = () => {      
+
   const {dispatch} = useGameContext()
   const cart = displayCart();
- 
+  const [clicked , setClicked ] = useState(false)
+  
+  const removeProductStyles = useSpring({
+         from:{
+            opacity:1
+         },
+         to:{
+            opacity:clicked? 0 :1 
+         }
+  })
+
       const removeProductHandler  = (e:React.MouseEvent) =>{
           
-           
+            setClicked(true);
             const productID = e.currentTarget.getAttribute("data-product-unique-id");
             const discountPrice = e.currentTarget.getAttribute("data-discount-price");
             const normalPrice = e.currentTarget.getAttribute("data-normal-price");
@@ -49,7 +61,7 @@ const  DisplayProducts :React.FC = () => {
       
           
         return (
-               <div className={styles.productContainer} key = {uniqid}>
+               <div className={styles.productContainer} key = {uniqid} >
                     <img src={imageUrl} alt={productName}  className={styles.productImage}/>
                     <div className={styles.detailsContainer}>
                          <p className={styles.title}>{productName}</p>
@@ -66,7 +78,7 @@ const  DisplayProducts :React.FC = () => {
                           </div>
                           :<p className={styles.normalPriceSingle}>${productPrice}</p>                        
                         }
-                          <div className={styles.deleteGroup} onClick={(e)=>removeProductHandler(e)} data-product-unique-id={[uniqid]} data-discount-price = {[productDiscountPrice]} data-normal-price= {[productPrice]}>
+                          <div className={styles.deleteGroup}   onClick={(e)=>removeProductHandler(e)} data-product-unique-id={[uniqid]} data-discount-price = {[productDiscountPrice]} data-normal-price= {[productPrice]}>
                               <IoTrashOutline className ={styles.deleteIcon} />
                               <div className={styles.textModalContainer}>        
                                     <p className={styles.textModal}>Remove product</p>

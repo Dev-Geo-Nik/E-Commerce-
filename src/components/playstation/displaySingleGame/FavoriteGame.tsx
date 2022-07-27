@@ -74,8 +74,9 @@ const  FavoriteGame :React.FC<Props> = ({gameId,platform}) => {
           <IoIosHeartEmpty className = {styles.heartIcon}/>
         </div>
         <div className={styles.textModalContainer}>        
-            <p className={styles.textModal}>{isFavored ? "Remove from wishlist" : "Add to Wishlist"}</p>
-            <div className={styles.modalBackground}></div>
+        
+            <p className={isFavored? [styles.textModal, styles.textModalUnfavorite].join(" ") : styles.textModal  }>{isFavored ? "Remove from wishlist" : "Add to Wishlist"}</p>
+            <div className={ isFavored ? [styles.modalBackground, styles.modalBackgroundUnfavorite].join(" ") :  styles.modalBackground}></div>
         </div>
     </div>
 </>

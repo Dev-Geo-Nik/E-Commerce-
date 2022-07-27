@@ -86,8 +86,18 @@ switch (action.type) {
       // console.log(action.payload.product)
         return ({
           ...state,
+          cartAnimation:true,
           gameSourceCart: [ action.payload.product] ,
           totalAmount: action.payload.totalAmount
+          
+        }
+      );
+    case  ActionTypes.CART_ANIMATE:
+      // console.log(action.payload.product)
+        return ({
+          ...state,
+          cartAnimation:action.payload
+        
           
         }
       );

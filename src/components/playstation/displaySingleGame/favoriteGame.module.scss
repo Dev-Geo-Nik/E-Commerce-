@@ -12,6 +12,7 @@
 
     &:hover {
         background-color: #94D021;
+        background-color: #ca5a55;
         border:1px solid var(--clr-primary-5);
 
         .heartIcon {
@@ -20,6 +21,12 @@
             animation: slideHeartFromRight 0.5s;
         }
     }
+}
+
+.backgroundCircle:active{
+    animation: shake 2.5s  both  ;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
 }
 
 .circle {
@@ -62,12 +69,42 @@
     right: 7.5rem;
     width: 2rem;
     height: 2rem;
-   
     transform: rotate(45deg);
     border: none;
 }
 
 
 .backgroundFavored{
+ 
     background-color: #94D021;
+    .heartIcon{
+        color:#fff;
+    }
 }
+
+
+.textModalUnfavorite{
+    
+    background-color: #ca5a55;
+
+  
+}
+
+  .modalBackgroundUnfavorite{
+    background-color: #ca5a55;
+ }
+
+ @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-5px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
