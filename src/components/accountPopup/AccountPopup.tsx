@@ -44,8 +44,12 @@ const  AccountPopup :React.FC = () => {
            {/* <h2>Welcome</h2> */}
            <AiFillCloseCircle className={styles.iconClose} onClick={resetClickedItem}/>
            <img src={Logo} alt="logo image from gamescoure" className={styles.logo} />
-           <Link to= "/app/login" className={`btn-cta ${styles.btnSingle}` } >Log in</Link>
-           <Link to="/app/playstation" className={[styles.ghostBtn ,"btn-ghost "].join(" ")}>Sign up</Link>
+           <div className={styles.btaContainer}>
+              <Link to= "/app/login" className={`btn-cta ${styles.btnSingle}` } >Log in</Link>
+           </div>
+            <div className={styles.ghostContainer}>
+              <Link to="/app/playstation" className={[styles.ghostBtn ,"btn-ghost "].join(" ")}>Sign up</Link>
+            </div>
         </div>
 
     </div>

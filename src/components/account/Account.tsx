@@ -1,28 +1,34 @@
-import { navigate } from 'gatsby';
+
 import React from 'react';
 import  * as styles from './account.module.scss';
-import { IoExitOutline } from "react-icons/io5";
 import { displayTotalCartAmount } from '../../util/CartHelpers';
+import SEO from '../layout/Seo';
+import Navbar from '../layout/Navbar';
+import Footer from '../layout/Footer';
+import AccountSections from './AccountSections';
+import Logout from './Logout';
+
+
 interface Props {
     path: string;
 }
 
+
+
 const  Account :React.FC<Props> = () => {
 
-  const logoutHandler = () => {
-    console.log("logout")
-    localStorage.clear();
-    
-    navigate("/")
-  }
+
 
   console.log(displayTotalCartAmount())
   
   return (
-<>
-Account
- <button onClick={logoutHandler}><IoExitOutline className={styles.logoutIcon}/>Logout</button>
-</>
+    <section className={styles.container}>
+    <SEO title="Account" description="Account page of GAMESOURCE" />
+        <Navbar/>
+          <AccountSections/>
+          <Logout/>
+        <Footer/>
+    </section>
 );
 };
 

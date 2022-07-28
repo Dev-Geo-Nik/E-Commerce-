@@ -3,7 +3,7 @@
 
     position:absolute;
     top: 40%;
-    left: 50%;
+    left:30%;
     transform: translate(-50%, -50%);
     color: #fff;
     background-color:rgba(0, 0,0 ,0.5);
@@ -25,6 +25,10 @@ form{
        width: 40rem;
        padding: 2rem;
       
+  }
+
+  form:active{
+  
   }
 
   input{

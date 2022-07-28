@@ -42,12 +42,20 @@
 }
 
 
+.btaContainer{
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    // background-color:red;
+    margin-bottom: 1.5rem;
+}
+
 .btnSingle{
     text-transform:none;
     border:2px solid #000;
-    width: 50%;
+    width: 100%;
     text-align: center;
-    margin-bottom: 1.5rem;
+   
     color: #fff;
 
     &:hover{
@@ -55,9 +63,31 @@
     }
 }
 
+.btnSingle:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    transition: all 1s;
+    transform:  translateX(-100%) rotate(45deg);
+}
+.btnSingle:hover:before{
+    transform:translateX(100%) rotate(45deg);
+}
+
+
+
+.ghostContainer{
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
 .ghostBtn{
     text-transform:none;
-    width: 50%;
+    width: 100%;
     text-align: center;
     color:#fff;
     display: block;
@@ -68,6 +98,20 @@
 
 }
 
+.ghostBtn:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    transition: all 1s;
+    transform:  translateX(-100%) rotate(45deg);
+}
+.ghostBtn:hover:before{
+    transform:translateX(100%) rotate(45deg);
+}
 .logo{
     width: 20rem;
     margin-bottom: 5rem;

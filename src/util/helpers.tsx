@@ -15,7 +15,10 @@ export const validationSchema = yup.object().shape({
 export const registerUserSchema = yup.object().shape({
   username:yup.string().min(2 ,"Username must be at least 2 characters").required("Username is required"),
   email:yup.string().email("Please insert a valid email address").required("Email is required"),
-  password:yup.string().min(6 ,"Password must be at least 6 characters").required("Password is required"),
+  password:yup.string().required("Password is required").matches(
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    "Password must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+  ),
   question:yup.string().required("Question is required"),
   
 
@@ -23,7 +26,7 @@ export const registerUserSchema = yup.object().shape({
 
 export const loginUserSchema = yup.object().shape({
   username:yup.string().min(2 ,"Username is required").required("Username is required"),
-  password:yup.string().min(6 ,"Password is required").required("Password is required"),
+  password:yup.string().required("Password is required"),
   question:yup.string().required("Question is required"),
   
 

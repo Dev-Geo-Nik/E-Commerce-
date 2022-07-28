@@ -117,19 +117,12 @@
     
 }
 
-// .deleteGroup{
-//     .deleteIcon:active{
-//         animation: shake 2.5s  both  ;
-//         transform: translate3d(0, 0, 0);
-//         perspective: 1000px;
-//     }
-// }
+.deleteIcon:active{
+    animation: shake 2.5s  both  ;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
 
-.productContainer:active{
-        animation: shake 2.5s  both  ;
-        transform: translate3d(0, 0, 0);
-        perspective: 1000px;
-       background-color:rgb(221, 116, 116);
+    
 }
 
 

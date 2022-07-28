@@ -29,24 +29,17 @@ const  DisplayProducts :React.FC = () => {
 
   const {dispatch} = useGameContext()
   const cart = displayCart();
-  const [clicked , setClicked ] = useState(false)
-  
-  const removeProductStyles = useSpring({
-         from:{
-            opacity:1
-         },
-         to:{
-            opacity:clicked? 0 :1 
-         }
-  })
+
+
+
 
       const removeProductHandler  = (e:React.MouseEvent) =>{
           
-            setClicked(true);
+           
             const productID = e.currentTarget.getAttribute("data-product-unique-id");
             const discountPrice = e.currentTarget.getAttribute("data-discount-price");
             const normalPrice = e.currentTarget.getAttribute("data-normal-price");
-            
+                  console.log(productID)
             if (productID) {
                   removeProductFromCart(productID,discountPrice,normalPrice)   
             }
@@ -61,7 +54,10 @@ const  DisplayProducts :React.FC = () => {
       
           
         return (
-               <div className={styles.productContainer} key = {uniqid} >
+               <div className={styles.productContainer} key = {uniqid}       >
+         
+
+                 
                     <img src={imageUrl} alt={productName}  className={styles.productImage}/>
                     <div className={styles.detailsContainer}>
                          <p className={styles.title}>{productName}</p>
@@ -86,6 +82,7 @@ const  DisplayProducts :React.FC = () => {
                               </div>
                           </div>
                     </div>
+                    
                </div>
         )
   })

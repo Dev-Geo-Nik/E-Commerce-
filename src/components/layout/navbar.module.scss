@@ -1,13 +1,8 @@
 .nav{
-// background-color: var(--clr-primary-2);
+
 grid-column:  2 / 14;
 height: 12rem;
  
-
-  // &:hover{
-  //   // background-color: red;
- 
-  // }
 
   ul{
     display: flex;
@@ -17,20 +12,68 @@ height: 12rem;
     
   }
  
-  //  li{
-  
-  // }
-
   a{
     color: var(--clr-primary-1);
     font-size: 2.2rem;
     display:flex;
     align-items:center; 
+    position:relative;
+    transition: all 0.3s;
     padding: 0.8rem 1rem;
+
+ 
+
+
   }
  
 
 }
+
+.link{
+  position:relative;
+  transition: all 0.3s;
+  overflow: hidden; 
+}
+
+.link:before{
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  bottom: 0;
+  left: -50%;
+  background-color:var(--clr-primary-1);
+  transition: all  0.5s;
+  z-index: 2;
+}
+
+
+.link:after{
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  bottom: 0;
+  right:-50%;
+  z-index: 2;
+  background-color:var(--clr-primary-3);
+  transition: all  0.5s;
+  
+  
+}
+
+.link:hover:before{
+  left: 50%;
+ }
+ 
+
+
+ 
+ .link:hover:after{
+  right: 50%;
+ }
+ 
+
 
 
 .linksContainer{
@@ -61,10 +104,13 @@ height: 12rem;
 }
 
 .icon{
+ 
+    z-index: 1;
     font-size:2.2rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     color:#fff;
 }
+
 
 .iconCart{
   font-size:2.2rem;
@@ -78,6 +124,7 @@ height: 12rem;
   position: relative;
   transition: var(--transition);
   cursor: pointer;
+
   &:hover{
 
     .iconCart{

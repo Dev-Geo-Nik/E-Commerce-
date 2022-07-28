@@ -86,7 +86,7 @@ const  Button :React.FC<Props> = ({stock,gameId,platform,imageUrl,productDiscoun
     }, 1600);
   }
 
-  console.log(clicked)
+  // console.log(clicked)
 
 
                     

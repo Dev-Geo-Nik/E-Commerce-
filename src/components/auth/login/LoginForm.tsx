@@ -1,11 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { navigate } from 'gatsby';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ActionTypes } from '../../../context/Constants';
 import { useGameContext } from '../../../context/game/GameContext';
 import {  getRandomNumberBetween, loginUserSchema } from '../../../util/helpers';
 import  * as styles from './loginForm.module.scss';
+import {useSpring , animated as a } from "react-spring";
 
 
 type LoginUser  = { 
@@ -25,6 +26,8 @@ const  LoginForm :React.FC = () => {
   const [questionError, setQuestionError] = useState("")
   const  [isError,setIsError] = useState(false)
   const  [errorMessage,setErrorMessage] = useState("")
+   const [shakeError ,setShakeError] = useState(false);
+
 
   const {
     register,
@@ -40,6 +43,28 @@ const  LoginForm :React.FC = () => {
   });
 
 
+  // useEffect(()=>{
+
+  // },[shakeError])
+
+  const { x } = useSpring({
+    from: { x:0},
+    to: { x:  shakeError ? 1 : 0},
+  
+    
+  });
+
+  if(Object.keys(errors).length > 0){
+    // console.log("in")
+  
+    setTimeout(() => {
+      setShakeError(true);
+      
+    }, 100);
+    
+
+  }
+
   const onSubmit = (formData: LoginUser) => {
  
    
@@ -47,9 +72,10 @@ const  LoginForm :React.FC = () => {
     
       if (+formData.question != total) {
         setQuestionError("Answer is incorrect, please try again");
+        setShakeError(true);
         return;
       }
-     
+      setShakeError(false)
       const loginUserPayload ={
           identifier:formData.username,
           password:formData.password
@@ -72,7 +98,7 @@ const  LoginForm :React.FC = () => {
 
           const res = await fetch("http://localhost:1340/api/auth/local",request)
           const userData = await res.json();
-     
+      
 
           if (userData.user) {
 
@@ -95,6 +121,11 @@ const  LoginForm :React.FC = () => {
               dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
             
               setIsError(true)
+              setTimeout(() => {
+                setShakeError(true);
+                
+              }, 100);
+              
               setErrorMessage("Invalid username or password ")
         
           }
@@ -114,9 +145,19 @@ postData()
 
 };
   return (
-<div className={styles.formWrapper}>
+<a.div  className={styles.formWrapper} 
+  style={{
+    transform: x
+      .to({
+        range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+        output: [180, 220, 180, 220, 180, 220, 180, 200]
+      })
+      .to(x => `translate3d(${x}px, -120px, 0px)`)
+
+}}
+>
 {isError && <p className={styles.errorsMessageText}>{errorMessage}</p>}
- <form onSubmit={handleSubmit(onSubmit)} className="form">
+ <form onSubmit={handleSubmit(onSubmit)} className="form" >
       <label htmlFor="Userusername">Username*</label>
       <input type="text"  {...register('username')}  className={` ${errors.username ? 'is-invalid' : ''}`}  />
       {errors.username  ? <p className={styles.errorText}>{errors.username.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
@@ -135,7 +176,7 @@ postData()
 
       <button className="btn-cta" type="submit">Sign In</button>
     </form> 
-</div>
+</a.div>
 );
 };
 

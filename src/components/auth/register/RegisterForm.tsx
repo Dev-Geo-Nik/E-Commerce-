@@ -7,6 +7,7 @@ import RegisterSuccess from './RegisterSuccess';
 import { useGameContext } from '../../../context/game/GameContext';
 import Spinner from '../../spinner/Spinner';
 import { ActionTypes } from '../../../context/Constants';
+import { useSpring ,animated as a} from 'react-spring';
 
 type RegisterUser  = { 
     username:string,
@@ -27,7 +28,7 @@ const  RegisterForm :React.FC = () => {
   const  [isError,setIsError] = useState(false)
   const  [errorMessage,setErrorMessage] = useState("")
   const [questionError, setQuestionError] = useState("")
-
+  const [shakeError ,setShakeError] = useState(false);
 
 
     const {
@@ -43,6 +44,25 @@ const  RegisterForm :React.FC = () => {
       resolver: yupResolver(registerUserSchema)
     });
 
+    
+  const { x } = useSpring({
+    from: { x:0},
+    to: { x:  shakeError ? 1 : 0},
+  
+    
+  });
+
+  // if(Object.keys(errors).length > 0){
+  //   // console.log("in")
+  
+  //   setTimeout(() => {
+  //     setShakeError(true);
+      
+  //   }, 100);
+    
+
+  // }
+
 
     const onSubmit = (formData: RegisterUser) => {
  
@@ -51,9 +71,10 @@ const  RegisterForm :React.FC = () => {
       
         if (+formData.question != total) {
           setQuestionError("Answer is incorrect, please try again");
+          setShakeError(true);
           return;
         }
-       
+        setShakeError(false)
         const registerUserPayload ={
             username:formData.username,
             email:formData.email,
@@ -100,6 +121,11 @@ const  RegisterForm :React.FC = () => {
             
           } catch (err:any) {
               setIsError(true)
+              setTimeout(() => {
+                setShakeError(true);
+                
+              }, 100);
+              
               setErrorMessage(err.message)
               dispatch({type:ActionTypes.TOGGLE_LOADING ,payload:false})
             
@@ -117,7 +143,18 @@ postData()
   return (
 
 
-<div className={styles.formWrapper}>
+<a.div className={styles.formWrapper}
+style={{
+  transform: x
+    .to({
+      range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+      output: [180, 220, 180, 220, 180, 220, 180, 200]
+    })
+    .to(x => `translate3d(${x}px, 0px, 0px)`)
+
+}}
+
+>
     {isError && <p className={styles.errorsMessageText}>{errorMessage}</p>}
 
   
@@ -145,7 +182,7 @@ postData()
     </form> 
     } 
 
-</div>
+</a.div>
 
 
 );
