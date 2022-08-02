@@ -1,6 +1,14 @@
 
+import React from 'react';
 import * as yup from 'yup';
 import { PlaystationGameStatus } from '../context/Constants';
+import { MdManageAccounts } from "react-icons/md";
+import { BiPackage } from "react-icons/bi";
+import { IoIosHeartEmpty } from 'react-icons/io';
+import { BsFillShieldLockFill } from "react-icons/bs";
+import { MdHeadsetMic } from "react-icons/md";
+
+
 
 export const validationSchema = yup.object().shape({
   name:yup.string().min(2 ,"Name must be at least 2 characters").required("Name is required"),
@@ -15,9 +23,9 @@ export const validationSchema = yup.object().shape({
 export const registerUserSchema = yup.object().shape({
   username:yup.string().min(2 ,"Username must be at least 2 characters").required("Username is required"),
   email:yup.string().email("Please insert a valid email address").required("Email is required"),
-  password:yup.string().required("Password is required").matches(
+  password:yup.string().required("Please Enter your password").matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-    "Password must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    "Password must be min 8   Characters and Contain One Uppercase, One Lowercase, One Number and One Special Case Character"
   ),
   question:yup.string().required("Question is required"),
   
@@ -216,3 +224,38 @@ export const isFavoredCheckFun  =async(user:string | null,username:string  |null
 
 
 
+export const AccountCategoriesData = [
+
+  {
+    title:"Account Information",
+    subtitle:"Edit account information",
+    icon: <MdManageAccounts className="icon"/>
+    
+  },
+  {
+    title:"Your Orders",
+    subtitle:"Track your orders",
+    icon: <BiPackage/>
+    
+  },
+  {
+    title:"Your Favorites",
+    subtitle:"Track your wishlist",
+    icon: <IoIosHeartEmpty/>
+    
+  },
+  {
+    title:"Login & Security",
+    subtitle:"Edit account password",
+    icon: <BsFillShieldLockFill/>
+    
+  },
+  {
+    title:"Customer Service",
+    subtitle:"Contact customer service",
+    icon: <MdHeadsetMic/>
+    
+  },
+
+
+]

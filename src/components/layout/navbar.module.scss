@@ -113,9 +113,11 @@ height: 12rem;
 
 
 .iconCart{
-  font-size:2.2rem;
+  font-size:2.6rem;
    margin-right: 0.5rem;
   color:#fff;
+  
+  
 }
 
 
@@ -124,6 +126,8 @@ height: 12rem;
   position: relative;
   transition: var(--transition);
   cursor: pointer;
+  // background-color:red;
+  
 
   &:hover{
 

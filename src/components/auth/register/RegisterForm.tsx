@@ -45,6 +45,8 @@ const  RegisterForm :React.FC = () => {
     });
 
     
+    // console.log(errors.password?.message)
+    // console.log(errors.password?.type)
   const { x } = useSpring({
     from: { x:0},
     to: { x:  shakeError ? 1 : 0},
@@ -52,16 +54,16 @@ const  RegisterForm :React.FC = () => {
     
   });
 
-  // if(Object.keys(errors).length > 0){
-  //   // console.log("in")
+  if(Object.keys(errors).length > 0){
+   
   
-  //   setTimeout(() => {
-  //     setShakeError(true);
+    setTimeout(() => {
+      setShakeError(true);
       
-  //   }, 100);
+    }, 100);
     
 
-  // }
+  }
 
 
     const onSubmit = (formData: RegisterUser) => {
@@ -172,7 +174,7 @@ style={{
       
       <label htmlFor="Password">Password*</label>
       <input type="password"  {...register('password')}  className={` ${errors.password ? 'is-invalid' : ''}`}  />
-      {errors.username  ? <p className={styles.errorText}>{errors.password?.message}</p>   :  <p className={styles.errorGhost}>No Error</p>}
+      {errors.password  ? <p className={styles.errorText}>{errors.password?.message} </p>   :  <p className={styles.errorGhost}>No Error</p>}
 
       <label htmlFor="question">What is {value1} + {value2}?*</label>
       <input  type="text"  {...register('question')}  className={`form-control ${errors.question ? 'is-invalid' : ''}`}/>

@@ -12,6 +12,10 @@ const active = {
      zIndex:3,
      // borderRadius:px"
 }
+const activeCart  ={
+     background: "#5e5b5b",
+     height:"100%"
+}
    
 // How to pass 2 classes in scss modules
 // className={[styles.icon, styles.playstation].join(" ")}  
@@ -84,14 +88,14 @@ const  Navbar :React.FC = () => {
                     </Link>
                </li>
                <li className ={ userJWT ?  [styles.displayBlock , styles.link].join(" "): styles.displayNone  }>
-                    <Link to="/app/account" activeStyle={active}>
+                    <Link to="/app/account" activeStyle={active} >
                     <FaUserCog className={styles.icon}/> 
                        {userJWT ?  username : "My Account"}
                      </Link>
                </li>
               
                <animated.li className={styles.linkCart} style={{...cartAnimate}}>
-                    <Link to="/app/cart"   >                 
+                    <Link to="/app/cart"  activeStyle={activeCart}  >                 
                          <FaShoppingCart className={styles.iconCart}/>  
                          <span  className={styles.cartText}>{displayCart() ? displayCart().length : "0"}</span>
                     </Link>
